@@ -1,6 +1,13 @@
 # Regule
-Trabalho de Papaiz
+Um sistema voltado para regular as compras e vendas realizadas por uma loja. Detalhes
 
-Gente, Caso estejam com dúvida como podem fazer essa aplicação rodar, primeiro vocês tem que seguir esse
-#passo a passo:
- - Criar o banco de dados chamado Loja. Existe um arquivo Loja.zip na pasta seed que tem um backup do banco para facilitar
+## Organização
+Utiliza uma organização com base no Modelo MVC.
+
+***
+
+###Alguns detalhes para o funcionamento do projeto
+
+Existe um backup do banco na pasta Seed.
+Ele será atualizado a cada crud, para contar novas informações.
+Caso ocorra algum erro, comunicar, ou tentar usar o novo backup do banco.
