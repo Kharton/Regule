@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Loja" Class="ReguleDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=Loja;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="LojaConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.CliComunicar" Member="CliComunicars">
+    <Type Name="CliComunicar">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Principal" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Valor" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Ordem" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Tel" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IdPessoa" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Pessoa_CliComunicar" Member="Pessoa" ThisKey="IdPessoa" OtherKey="Id" Type="Pessoa" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VendaProduto" Member="VendaProdutos">
+    <Type Name="VendaProduto">
+      <Column Name="IdPro" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IdVend" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IdUnidade" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Quantidade" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Preco" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Association Name="Produto_VendaProduto" Member="Produto" ThisKey="IdPro" OtherKey="Id" Type="Produto" IsForeignKey="true" />
+      <Association Name="Unidade_VendaProduto" Member="Unidade" ThisKey="IdUnidade" OtherKey="Id" Type="Unidade" IsForeignKey="true" />
+      <Association Name="Venda_VendaProduto" Member="Venda" ThisKey="IdVend" OtherKey="Id" Type="Venda" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Compra" Member="Compras">
+    <Type Name="Compra">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Data" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="IdPessoa" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Desconto" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Association Name="Compra_CompraProduto" Member="CompraProdutos" ThisKey="Id" OtherKey="IdComp" Type="CompraProduto" />
+      <Association Name="Pessoa_Compra" Member="Pessoa" ThisKey="IdPessoa" OtherKey="Id" Type="Pessoa" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CompraProduto" Member="CompraProdutos">
+    <Type Name="CompraProduto">
+      <Column Name="IdPro" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IdComp" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IdUnidade" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Quantidade" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Preco" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Association Name="Compra_CompraProduto" Member="Compra" ThisKey="IdComp" OtherKey="Id" Type="Compra" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Produto_CompraProduto" Member="Produto" ThisKey="IdPro" OtherKey="Id" Type="Produto" IsForeignKey="true" />
+      <Association Name="Unidade_CompraProduto" Member="Unidade" ThisKey="IdUnidade" OtherKey="Id" Type="Unidade" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Fisica" Member="Fisicas">
+    <Type Name="Fisica">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CPF" Type="System.String" DbType="Char(11)" CanBeNull="true" />
+      <Association Name="Fisica_Funcionario" Member="Funcionario" ThisKey="Id" OtherKey="Id" Type="Funcionario" Cardinality="One" />
+      <Association Name="Pessoa_Fisica" Member="Pessoa" ThisKey="Id" OtherKey="Id" Type="Pessoa" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Funcionario" Member="Funcionarios">
+    <Type Name="Funcionario">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RG" Type="System.String" DbType="Char(9)" CanBeNull="true" />
+      <Column Name="Salario" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="CarteiraTrb" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Dirige" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Tecnico" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Observacao" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Association Name="Funcionario_Pagamento" Member="Pagamentos" ThisKey="Id" OtherKey="IdFun" Type="Pagamento" />
+      <Association Name="Fisica_Funcionario" Member="Fisica" ThisKey="Id" OtherKey="Id" Type="Fisica" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Juridica" Member="Juridicas">
+    <Type Name="Juridica">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CNPJ" Type="System.String" DbType="Char(14)" CanBeNull="true" />
+      <Column Name="RazaoSocial" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Association Name="Pessoa_Juridica" Member="Pessoa" ThisKey="Id" OtherKey="Id" Type="Pessoa" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Pagamento" Member="Pagamentos">
+    <Type Name="Pagamento">
+      <Column Name="IdFun" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Data" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Referencia" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Valor" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Association Name="Funcionario_Pagamento" Member="Funcionario" ThisKey="IdFun" OtherKey="Id" Type="Funcionario" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Pessoa" Member="Pessoas">
+    <Type Name="Pessoa">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nome" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Fornecedor" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Pessoa_CliComunicar" Member="CliComunicars" ThisKey="Id" OtherKey="IdPessoa" Type="CliComunicar" />
+      <Association Name="Pessoa_Compra" Member="Compras" ThisKey="Id" OtherKey="IdPessoa" Type="Compra" />
+      <Association Name="Pessoa_Fisica" Member="Fisica" ThisKey="Id" OtherKey="Id" Type="Fisica" Cardinality="One" />
+      <Association Name="Pessoa_Juridica" Member="Juridica" ThisKey="Id" OtherKey="Id" Type="Juridica" Cardinality="One" />
+      <Association Name="Pessoa_Venda" Member="Vendas" ThisKey="Id" OtherKey="IdPessoa" Type="Venda" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Produto" Member="Produtos">
+    <Type Name="Produto">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nome" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Association Name="Produto_VendaProduto" Member="VendaProdutos" ThisKey="Id" OtherKey="IdPro" Type="VendaProduto" />
+      <Association Name="Produto_CompraProduto" Member="CompraProdutos" ThisKey="Id" OtherKey="IdPro" Type="CompraProduto" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Unidade" Member="Unidades">
+    <Type Name="Unidade">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Sigla" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="Descricao" Type="System.String" DbType="VarChar(450)" CanBeNull="true" />
+      <Association Name="Unidade_VendaProduto" Member="VendaProdutos" ThisKey="Id" OtherKey="IdUnidade" Type="VendaProduto" />
+      <Association Name="Unidade_CompraProduto" Member="CompraProdutos" ThisKey="Id" OtherKey="IdUnidade" Type="CompraProduto" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Venda" Member="Vendas">
+    <Type Name="Venda">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdPessoa" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Data" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Desconto" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Association Name="Venda_VendaProduto" Member="VendaProdutos" ThisKey="Id" OtherKey="IdVend" Type="VendaProduto" />
+      <Association Name="Pessoa_Venda" Member="Pessoa" ThisKey="IdPessoa" OtherKey="Id" Type="Pessoa" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
