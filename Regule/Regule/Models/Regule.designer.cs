@@ -555,8 +555,8 @@ namespace Regule.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Preco", DbType="Money")]
+        [DisplayName("Preço")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Preco", DbType="Money")]
 		public System.Nullable<decimal> Preco
 		{
 			get
@@ -1039,8 +1039,8 @@ namespace Regule.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Preco", DbType="Money")]
+        [DisplayName("Preço")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Preco", DbType="Money")]
 		public System.Nullable<decimal> Preco
 		{
 			get
@@ -1456,8 +1456,8 @@ namespace Regule.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CarteiraTrb", DbType="NVarChar(50)")]
+        [DisplayName("Carteira de trabalho")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CarteiraTrb", DbType="NVarChar(50)")]
 		public string CarteiraTrb
 		{
 			get
@@ -1515,9 +1515,9 @@ namespace Regule.Models
 					this.OnTecnicoChanged();
 				}
 			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Observacao", DbType="VarChar(1000)")]
+        }
+        [DisplayName("Observação")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Observacao", DbType="VarChar(1000)")]
 		public string Observacao
 		{
 			get
@@ -1692,7 +1692,7 @@ namespace Regule.Models
 				}
 			}
 		}
-		
+		[DisplayName("Razão social")]
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RazaoSocial", DbType="VarChar(250)")]
 		public string RazaoSocial
 		{
@@ -1977,7 +1977,7 @@ namespace Regule.Models
 		
 		private string _Nome;
 		
-		private System.Nullable<bool> _Fornecedor;
+		private bool _Fornecedor;
 		
 		private EntitySet<CliComunicar> _CliComunicars;
 		
@@ -1997,7 +1997,7 @@ namespace Regule.Models
     partial void OnIdChanged();
     partial void OnNomeChanging(string value);
     partial void OnNomeChanged();
-    partial void OnFornecedorChanging(System.Nullable<bool> value);
+    partial void OnFornecedorChanging(bool value);
     partial void OnFornecedorChanged();
     #endregion
 		
@@ -2052,7 +2052,7 @@ namespace Regule.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fornecedor", DbType="Bit")]
-		public System.Nullable<bool> Fornecedor
+		public bool Fornecedor
 		{
 			get
 			{
@@ -2441,8 +2441,8 @@ namespace Regule.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descricao", DbType="VarChar(450)")]
+        [DisplayName("Descrição")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descricao", DbType="VarChar(450)")]
 		public string Descricao
 		{
 			get

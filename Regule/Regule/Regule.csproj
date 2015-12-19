@@ -169,8 +169,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FuncionariosController.cs" />
+    <Compile Include="Controllers\PessoasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PFisicasController.cs" />
+    <Compile Include="Controllers\PJuridicasControllers.cs" />
     <Compile Include="Controllers\ProdutosController.cs" />
     <Compile Include="Controllers\UnidadesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -259,9 +263,26 @@
     <Content Include="Views\Unidades\Delete.cshtml" />
     <Content Include="Views\Unidades\Create.cshtml" />
     <Content Include="Seed\Loja.bak" />
+    <Content Include="Views\Pessoas\Create.cshtml" />
+    <Content Include="Views\Pessoas\Delete.cshtml" />
+    <Content Include="Views\Pessoas\Details.cshtml" />
+    <Content Include="Views\Pessoas\Edit.cshtml" />
+    <Content Include="Views\Pessoas\Index.cshtml" />
+    <Content Include="Views\PFisicas\Create.cshtml" />
+    <Content Include="Views\PFisicas\Delete.cshtml" />
+    <Content Include="Views\PFisicas\Details.cshtml" />
+    <Content Include="Views\PFisicas\Edit.cshtml" />
+    <Content Include="Views\PFisicas\Index.cshtml" />
+    <Content Include="Views\PJuridicas\Create.cshtml" />
+    <Content Include="Views\PJuridicas\Delete.cshtml" />
+    <Content Include="Views\PJuridicas\Details.cshtml" />
+    <Content Include="Views\PJuridicas\Edit.cshtml" />
+    <Content Include="Views\PJuridicas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Compras\" />
+    <Folder Include="Views\Vendas\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

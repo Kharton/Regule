@@ -88,7 +88,7 @@
     <Type Name="Pessoa">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Nome" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
-      <Column Name="Fornecedor" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Fornecedor" Type="System.Boolean" DbType="Bit" CanBeNull="false" />
       <Association Name="Pessoa_CliComunicar" Member="CliComunicars" ThisKey="Id" OtherKey="IdPessoa" Type="CliComunicar" />
       <Association Name="Pessoa_Compra" Member="Compras" ThisKey="Id" OtherKey="IdPessoa" Type="Compra" />
       <Association Name="Pessoa_Fisica" Member="Fisica" ThisKey="Id" OtherKey="Id" Type="Fisica" Cardinality="One" />

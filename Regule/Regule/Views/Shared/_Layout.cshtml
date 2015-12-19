@@ -22,6 +22,13 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li class="dropdown">
+                        @Html.ActionLink("Pessoas","Index","Pessoas",new { area = ""}, new {@class = "dropdown-toggle"})
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Fisicas","Index","PFisicas")</li>
+                            <li>@Html.ActionLink("Juridicas","Index","PJuridicas")</li>
+                        </ul>
+                    </li>
                     <li>@Html.ActionLink("Unidades", "Index", "Unidades")</li>
                     <li>@Html.ActionLink("Produtos", "Index", "Produtos")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
@@ -42,5 +49,15 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script>
+    $('.dropdown').hover(
+        function() {
+            $(this).find('.dropdown-menu').stop(true, true).fadeIn();
+        },
+        function() {
+            $(this).find('.dropdown-menu').stop(true, true).fadeOut();
+        }
+    );
+    </script>
 </body>
 </html>
