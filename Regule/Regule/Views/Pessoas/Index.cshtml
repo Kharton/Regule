@@ -5,10 +5,6 @@
 }
 
 <h2>Pessoas</h2>
-
-<p>
-    @Html.ActionLink("Novo", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -20,7 +16,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Fornecedor)
         </th>
-        <th></th>
+        <th>
+            @Html.ActionLink("Novo", "Create",null,new {@class="btn btn-default"})
+        </th>
     </tr>
 
     @foreach (var item in Model)
@@ -36,9 +34,11 @@
                 @Html.DisplayFor(modelItem => item.Fornecedor)
             </td>
             <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Detalhes", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Deletar", "Delete", new { id = item.Id })
+                <span class="btn-group">
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Id},new{ @class="btn btn-sm btn-warning"})
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.Id }, new{@class="btn btn-sm btn-info"})
+                    @Html.ActionLink("Deletar", "Delete", new { id = item.Id },new{@class="btn btn-sm btn-danger"})
+                </span>
             </td>
         </tr>
     }

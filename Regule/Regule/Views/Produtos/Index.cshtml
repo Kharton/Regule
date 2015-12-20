@@ -30,9 +30,11 @@
                 @Html.DisplayFor(modelItem => item.Nome)
             </td>
             <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Detalhes", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Deletar", "Delete", new { id = item.Id })
+                <span class="btn-group btn-group-sm">
+                    <a href="Edit/@item.Id" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="Details/@item.Id" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></a>
+                    <a href="Delete/@item.Id" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></a>
+                </span>
             </td>
         </tr>
     }
