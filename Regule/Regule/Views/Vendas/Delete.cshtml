@@ -43,6 +43,15 @@
             @Html.DisplayFor(model => model.Data)
         </dd>
     </dl>
+    <ol>
+        @Html.DisplayNameFor(model => model.VendaProdutos)
+        @foreach (var item in Model.VendaProdutos)
+        {
+        <li>
+            @Html.DisplayFor(i => item.Produto.Nome) - > @Html.DisplayFor(i => item.Quantidade)
+        </li>
+        }
+    </ol>
 
     @using (Html.BeginForm())
     {

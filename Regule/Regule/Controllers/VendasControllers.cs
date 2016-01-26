@@ -44,7 +44,7 @@ namespace Regule.Controllers
         // POST: Vendas/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Data,Desconto,Pessoa")] Venda Vend)
+        public ActionResult Create([Bind(Include = "Data,Desconto,Pessoa,VendaProdutos")] Venda Vend)
         {
             if (ModelState.IsValid)
             {
@@ -70,13 +70,18 @@ namespace Regule.Controllers
             }
             IEnumerable<Pessoa> pessoas = db.Pessoas.ToList();
             ViewBag.Pessoas = pessoas.Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
+            IEnumerable<Unidade> unidades = db.Unidades.ToList();
+            ViewBag.Unidades = unidades.Select(h => new SelectListItem { Text = h.Sigla + " - " + h.Descricao, Value = h.Id.ToString() });
+            IEnumerable<Produto> produtos = db.Produtos.ToList();
+            ViewBag.Produtos = produtos.Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
+
             return View(Vend);
         }
 
         // POST: Vendas/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Data,Desconto,Pessoa")] Venda Vend)
+        public ActionResult Edit([Bind(Include = "Id,Data,Desconto,Pessoa,VendaProdutos")] Venda Vend)
         {
             if (ModelState.IsValid)
             {
@@ -84,6 +89,7 @@ namespace Regule.Controllers
                 tp.Data = Vend.Data;
                 tp.Desconto = Vend.Desconto;
                 tp.IdPessoa = Vend.IdPessoa;
+                tp.VendaProdutos = Vend.VendaProdutos;
                 db.SubmitChanges();
                 return RedirectToAction("Index");
             }

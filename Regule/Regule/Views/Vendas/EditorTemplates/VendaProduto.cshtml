@@ -1,0 +1,23 @@
+﻿@model Regule.Models.VendaProduto
+                <tr>
+                    <td>
+                        @Html.DropDownListFor(m => Model.IdPro, ViewBag.Produtos as IEnumerable<SelectListItem>
+                            ,"Produto",new { @class = "form-control" })
+                    </td>
+                
+
+                    <td>
+                        @Html.EditorFor(m => Model.Quantidade , new { @class = "form-control" })
+                    </td>
+
+
+                    <td>
+                        @Html.DropDownListFor(m => Model.IdUnidade, ViewBag.Unidades as IEnumerable<SelectListItem>
+                            ,"Unidade",new { @class = "form-control" })
+                    </td>
+
+
+                    <td>
+                        @Html.EditorFor(m => Model.Preco , new { @class = "form-control" })
+                    </td>
+                </tr>
