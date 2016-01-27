@@ -43,29 +43,30 @@
                 @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
             </div>
         </div>
-        
-        <table class="table table-hover">
-            <tr>
-                <th>
-                    Produto
-                </th>
-                <th>
-                    Quantidade
-                </th>
-                <th>
-                    Unidade
-                </th>
-                <th>
-                    Preço
-                </th>
-                <th>
-                    <div class="btn btn-default adicionar">
-                        <i class="glyphicon glyphicon-plus-sign"></i>
-                    </div>
-                </th>
-            </tr>
-            @Html.EditorFor(model=>model.CompraProdutos, new { htmlAttributes = new { @class = "form-control" } })
-        </table>
+        <div class="panel panel-default">
+            <table class="table table-hover">
+                <tr>
+                    <th>
+                        Produto
+                    </th>
+                    <th>
+                        Quantidade
+                    </th>
+                    <th>
+                        Unidade
+                    </th>
+                    <th>
+                        Preço
+                    </th>
+                    <th>
+                        <div class="btn btn-default adicionar">
+                            <i class="glyphicon glyphicon-plus-sign"></i>
+                        </div>
+                    </th>
+                </tr>
+                @Html.EditorFor(model=>model.CompraProdutos, new { htmlAttributes = new { @class = "form-control" } })
+            </table>
+        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

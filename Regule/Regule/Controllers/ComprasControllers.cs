@@ -37,20 +37,24 @@ namespace Regule.Controllers
         public ActionResult Create()
         {
             IEnumerable<Pessoa> pessoas = db.Pessoas.Where(x => x.Fornecedor == true).ToList();
-
+            Compra Comp = new Compra();
+            if (Comp.CompraProdutos.Count < 1)
+            {
+                Comp.CompraProdutos.Add(new CompraProduto());
+            }
             ViewBag.Pessoas = pessoas.Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
             IEnumerable<Unidade> unidades = db.Unidades.ToList();
             ViewBag.Unidades = unidades.Select(h => new SelectListItem { Text = h.Sigla + " - " + h.Descricao, Value = h.Id.ToString() });
             IEnumerable<Produto> produtos = db.Produtos.ToList();
             ViewBag.Produtos = produtos.Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
             ViewBag.Pessoas = pessoas.Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString()} );
-            return View();
+            return View(Comp);
         }
 
         // POST: Compras/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Data,Desconto,IdPessoa")] Compra Comp)
+        public ActionResult Create([Bind(Include = "Data,Desconto,IdPessoa,CompraProdutos")] Compra Comp)
         {
             if (ModelState.IsValid)
             {
@@ -74,6 +78,10 @@ namespace Regule.Controllers
             {
                 return HttpNotFound();
             }
+            if (Comp.CompraProdutos.Count < 1)
+            {
+                Comp.CompraProdutos.Add(new CompraProduto());
+            }
             IEnumerable<Pessoa> pessoas = db.Pessoas.Where(x => x.Fornecedor==true).ToList();
             ViewBag.Pessoas = pessoas.Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
             IEnumerable<Unidade> unidades = db.Unidades.ToList();
@@ -81,13 +89,14 @@ namespace Regule.Controllers
             IEnumerable<Produto> produtos = db.Produtos.ToList();
             ViewBag.Produtos = produtos.Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
             ViewBag.Pessoas = pessoas.Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
+            ViewBag.ex = db.CompraProdutos.FirstOrDefault();
             return View(Comp);
         }
 
         // POST: Compras/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Desconto,Pessoa,Data")] Compra Comp)
+        public ActionResult Edit([Bind(Include = "Id,Desconto,IdPessoa,Data,CompraProdutos")] Compra Comp)
         {
             if (ModelState.IsValid)
             {
@@ -95,6 +104,7 @@ namespace Regule.Controllers
                 tp.Data = Comp.Data;
                 tp.Desconto = Comp.Desconto;
                 tp.IdPessoa = Comp.IdPessoa;
+                tp.CompraProdutos = Comp.CompraProdutos;
                 db.SubmitChanges();
                 return RedirectToAction("Index");
             }

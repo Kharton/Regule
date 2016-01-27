@@ -38,7 +38,11 @@ namespace Regule.Controllers
         {
             IEnumerable<Pessoa> pessoas = db.Pessoas.Where(x => x.Fisica != null && x.Fisica.Funcionario != null).ToList();
             ViewBag.Pessoas = pessoas.Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
-            
+            Venda Vend = new Venda();
+            if (Vend.VendaProdutos.Count < 1)
+            {
+                Vend.VendaProdutos.Add(new VendaProduto());
+            }
             ViewBag.Pessoas = pessoas.Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
             IEnumerable<Unidade> unidades = db.Unidades.ToList();
             ViewBag.Unidades = unidades.Select(h => new SelectListItem { Text = h.Sigla + " - " + h.Descricao, Value = h.Id.ToString() });
@@ -73,6 +77,10 @@ namespace Regule.Controllers
             if (Vend == null)
             {
                 return HttpNotFound();
+            }
+            if (Vend.VendaProdutos.Count < 1)
+            {
+                Vend.VendaProdutos.Add(new VendaProduto());
             }
             IEnumerable<Pessoa> pessoas = db.Pessoas.Where(x=>x.Fisica != null && x.Fisica.Funcionario != null).ToList();
             ViewBag.Pessoas = pessoas.Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });

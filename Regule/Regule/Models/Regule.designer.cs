@@ -758,6 +758,7 @@ namespace Regule.Models
             }
         }
 
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Data", DbType = "Date")]
         public System.Nullable<System.DateTime> Data
         {
@@ -1832,6 +1833,7 @@ namespace Regule.Models
             }
         }
 
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Data", DbType = "Date")]
         public System.Nullable<System.DateTime> Data
         {
@@ -2615,8 +2617,7 @@ namespace Regule.Models
                 }
             }
         }
-        [Required(ErrorMessage = "Please enter student name.")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yy}")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Data", DbType = "Date")]
         public System.Nullable<System.DateTime> Data
         {
