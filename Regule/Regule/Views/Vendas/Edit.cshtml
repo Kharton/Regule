@@ -5,7 +5,9 @@
 }
 
 <h2>Editar</h2>
-
+<table class="hidden sample">
+    @Html.EditorFor(model=>model.VendaProdutos[0], new { htmlAttributes = new { @class = "form-control" } })
+</table>
 
 @using (Html.BeginForm())
 {
@@ -55,6 +57,11 @@
                     </th>
                     <th>
                         Preço
+                    </th>
+                    <th>
+                        <div class="btn btn-default adicionar">
+                            <i class="glyphicon glyphicon-plus-sign"></i>
+                        </div>
                     </th>
                 </tr>
                 @Html.EditorFor(model => model.VendaProdutos, new { htmlAttributes = new { @class = "form-control" } })

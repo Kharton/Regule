@@ -28,6 +28,13 @@
                             <li>@Html.ActionLink("Juridicas","Index","PJuridicas")</li>
                         </ul>
                     </li>
+                    <li class="dropdown">
+                        @Html.ActionLink("Negociações","","",new { area = ""}, new {@class = "dropdown-toggle"})
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Compras","Index","Compras")</li>
+                            <li>@Html.ActionLink("Vendas","Index","Vendas")</li>
+                        </ul>
+                    </li>
                     <li>@Html.ActionLink("Unidades", "Index", "Unidades")</li>
                     <li>@Html.ActionLink("Produtos", "Index", "Produtos")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
@@ -46,8 +53,11 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/cldr.js")
+    @Scripts.Render("~/Scripts/globalize.js")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    @Scripts.Render("~/Scripts/Main.js")
     <script>
     $('.dropdown').hover(
         function() {
@@ -57,6 +67,22 @@
             $(this).find('.dropdown-menu').stop(true, true).fadeOut();
         }
     );
+    $.validator.methods.number = function (value, element) {
+        return this.optional(element) ||
+            !isNaN(Globalize.parseFloat(value));
+    }
+    $(document).ready(function () {
+        Globalize.locale('pt-BR');
+    });
+
+    jQuery.extend(jQuery.validator.methods, {
+        range: function (value, element, param) {
+            //Use the Globalization plugin to parse the value        
+            var val = $.global.parseFloat(value);
+            return this.optional(element) || (
+                val >= param[0] && val <= param[1]);
+        }
+    });
     </script>
 </body>
 </html>

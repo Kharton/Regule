@@ -1,5 +1,5 @@
 ﻿@model Regule.Models.VendaProduto
-                <tr>
+                <tr class="re-item">
                     <td>
                         @Html.DropDownListFor(m => Model.IdPro, ViewBag.Produtos as IEnumerable<SelectListItem>
                             ,"Produto",new { @class = "form-control" })
@@ -19,5 +19,12 @@
 
                     <td>
                         @Html.EditorFor(m => Model.Preco , new { @class = "form-control" })
+                    </td>
+                    
+                    <td>
+                        <div class="btn btn-default remover" >
+                            <i class="glyphicon glyphicon-trash">
+                            </i>
+                        </div>
                     </td>
                 </tr>
