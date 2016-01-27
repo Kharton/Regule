@@ -20,7 +20,7 @@ namespace Regule.Models
     using System.Linq.Expressions;
     using System.ComponentModel;
     using System;
-
+    using System.ComponentModel.DataAnnotations;
 
     [global::System.Data.Linq.Mapping.DatabaseAttribute(Name = "Loja")]
     public partial class ReguleDataContext : System.Data.Linq.DataContext
@@ -2615,7 +2615,8 @@ namespace Regule.Models
                 }
             }
         }
-
+        [Required(ErrorMessage = "Please enter student name.")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yy}")]
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Data", DbType = "Date")]
         public System.Nullable<System.DateTime> Data
         {

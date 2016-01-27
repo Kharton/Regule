@@ -293,22 +293,28 @@ $.extend($.validator, {
 	},
 
 	messages: {
-		required: "This field is required.",
-		remote: "Please fix this field.",
-		email: "Please enter a valid email address.",
-		url: "Please enter a valid URL.",
-		date: "Please enter a valid date.",
-		dateISO: "Please enter a valid date (ISO).",
-		number: "Please enter a valid number.",
-		digits: "Please enter only digits.",
-		creditcard: "Please enter a valid credit card number.",
-		equalTo: "Please enter the same value again.",
-		maxlength: $.validator.format("Please enter no more than {0} characters."),
-		minlength: $.validator.format("Please enter at least {0} characters."),
-		rangelength: $.validator.format("Please enter a value between {0} and {1} characters long."),
-		range: $.validator.format("Please enter a value between {0} and {1}."),
-		max: $.validator.format("Please enter a value less than or equal to {0}."),
-		min: $.validator.format("Please enter a value greater than or equal to {0}.")
+	    required: "Este campo &eacute; requerido.",
+	    remote: "Por favor, corrija este campo.",
+	    email: "Por favor, forne&ccedil;a um endere&ccedil;o de email v&aacute;lido.",
+	    url: "Por favor, forne&ccedil;a uma URL v&aacute;lida.",
+	    date: "Por favor, forne&ccedil;a uma data v&aacute;lida.",
+	    dateISO: "Por favor, forne&ccedil;a uma data v&aacute;lida (ISO).",
+	    number: "Por favor, forne&ccedil;a um n&uacute;mero v&aacute;lido.",
+	    digits: "Por favor, forne&ccedil;a somente d&iacute;gitos.",
+	    creditcard: "Por favor, forne&ccedil;a um cart&atilde;o de cr&eacute;dito v&aacute;lido.",
+	    equalTo: "Por favor, forne&ccedil;a o mesmo valor novamente.",
+	    extension: "Por favor, forne&ccedil;a um valor com uma extens&atilde;o v&aacute;lida.",
+	    maxlength: $.validator.format("Por favor, forne&ccedil;a n&atilde;o mais que {0} caracteres."),
+	    minlength: $.validator.format("Por favor, forne&ccedil;a ao menos {0} caracteres."),
+	    rangelength: $.validator.format("Por favor, forne&ccedil;a um valor entre {0} e {1} caracteres de comprimento."),
+	    range: $.validator.format("Por favor, forne&ccedil;a um valor entre {0} e {1}."),
+	    max: $.validator.format("Por favor, forne&ccedil;a um valor menor ou igual a {0}."),
+	    min: $.validator.format("Por favor, forne&ccedil;a um valor maior ou igual a {0}."),
+	    nifES: "Por favor, forne&ccedil;a um NIF v&aacute;lido.",
+	    nieES: "Por favor, forne&ccedil;a um NIE v&aacute;lido.",
+	    cifEE: "Por favor, forne&ccedil;a um CIF v&aacute;lido.",
+	    postalcodeBR: "Por favor, forne&ccedil;a um CEP v&aacute;lido.",
+	    cpfBR: "Por favor, forne&ccedil;a um CPF v&aacute;lido."
 	},
 
 	autoCreateRanges: false,
@@ -1037,7 +1043,7 @@ $.extend($.validator, {
 
 		// http://docs.jquery.com/Plugins/Validation/Methods/date
 		date: function( value, element ) {
-			return this.optional(element) || !/Invalid|NaN/.test(new Date(value).toString());
+		    return this.optional(element) || /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/.test(value);
 		},
 
 		// http://docs.jquery.com/Plugins/Validation/Methods/dateISO
@@ -1047,7 +1053,7 @@ $.extend($.validator, {
 
 		// http://docs.jquery.com/Plugins/Validation/Methods/number
 		number: function( value, element ) {
-			return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:,\d{3})+)?(?:\.\d+)?$/.test(value);
+			return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:\.\d{3})+)?(?:\,\d+)?$/.test(value);
 		},
 
 		// http://docs.jquery.com/Plugins/Validation/Methods/digits
