@@ -36,10 +36,9 @@ namespace Regule.Controllers
         // GET: Vendas/Create
         public ActionResult Create()
         {
-            IEnumerable<Pessoa> pessoas = db.Pessoas.ToList();
+            IEnumerable<Pessoa> pessoas = db.Pessoas.Where(x => x.Fisica != null && x.Fisica.Funcionario != null).ToList();
             ViewBag.Pessoas = pessoas.Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
-
-            Venda Vend = db.Vendas.FirstOrDefault();
+            
             ViewBag.Pessoas = pessoas.Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
             IEnumerable<Unidade> unidades = db.Unidades.ToList();
             ViewBag.Unidades = unidades.Select(h => new SelectListItem { Text = h.Sigla + " - " + h.Descricao, Value = h.Id.ToString() });
@@ -75,7 +74,7 @@ namespace Regule.Controllers
             {
                 return HttpNotFound();
             }
-            IEnumerable<Pessoa> pessoas = db.Pessoas.ToList();
+            IEnumerable<Pessoa> pessoas = db.Pessoas.Where(x=>x.Fisica != null && x.Fisica.Funcionario != null).ToList();
             ViewBag.Pessoas = pessoas.Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
             IEnumerable<Unidade> unidades = db.Unidades.ToList();
             ViewBag.Unidades = unidades.Select(h => new SelectListItem { Text = h.Sigla + " - " + h.Descricao, Value = h.Id.ToString() });

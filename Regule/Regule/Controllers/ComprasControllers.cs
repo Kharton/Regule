@@ -36,7 +36,13 @@ namespace Regule.Controllers
         // GET: Compras/Create
         public ActionResult Create()
         {
-            IEnumerable<Pessoa> pessoas = db.Pessoas.ToList();
+            IEnumerable<Pessoa> pessoas = db.Pessoas.Where(x => x.Fornecedor == true).ToList();
+
+            ViewBag.Pessoas = pessoas.Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
+            IEnumerable<Unidade> unidades = db.Unidades.ToList();
+            ViewBag.Unidades = unidades.Select(h => new SelectListItem { Text = h.Sigla + " - " + h.Descricao, Value = h.Id.ToString() });
+            IEnumerable<Produto> produtos = db.Produtos.ToList();
+            ViewBag.Produtos = produtos.Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
             ViewBag.Pessoas = pessoas.Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString()} );
             return View();
         }
@@ -68,7 +74,12 @@ namespace Regule.Controllers
             {
                 return HttpNotFound();
             }
-            IEnumerable<Pessoa> pessoas = db.Pessoas.ToList();
+            IEnumerable<Pessoa> pessoas = db.Pessoas.Where(x => x.Fornecedor==true).ToList();
+            ViewBag.Pessoas = pessoas.Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
+            IEnumerable<Unidade> unidades = db.Unidades.ToList();
+            ViewBag.Unidades = unidades.Select(h => new SelectListItem { Text = h.Sigla + " - " + h.Descricao, Value = h.Id.ToString() });
+            IEnumerable<Produto> produtos = db.Produtos.ToList();
+            ViewBag.Produtos = produtos.Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
             ViewBag.Pessoas = pessoas.Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
             return View(Comp);
         }

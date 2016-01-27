@@ -1,49 +1,30 @@
-﻿@model System.Data.Linq.EntitySet<Regule.Models.VendaProduto>
-
-    <div class="panel panel-default">
-        <table class="table table-hover">
-            <tr>
-                <th>
-                    Produto
-                </th>
-
-                <th>
-                    Quantidade
-                </th>
-
-                <th>
-                    Unidade
-                </th>
-
-                <th>
-                    Preço
-                </th>
-            </tr>
-            @for(var i = 0; i < Model.Count; i++)
-            {           
-
-                <tr>
-                    <td>
-                        @Html.DropDownListFor(m => Model[i].IdPro, ViewBag.Produtos as IEnumerable<SelectListItem>
-                            ,"Produto",new { @class = "form-control" })
-                    </td>
-                
-
-                    <td>
-                        @Html.EditorFor(m => Model[i].Quantidade , new { @class = "form-control" })
-                    </td>
+﻿@model Regule.Models.CompraProduto
+<tr class="re-item">
+    <td>
+        @Html.DropDownListFor(m => Model.IdPro, ViewBag.Produtos as IEnumerable<SelectListItem>
+            ,"Produto",new { @class = "form-control" })
+    </td>
 
 
-                    <td>
-                        @Html.DropDownListFor(m => Model[i].IdUnidade, ViewBag.Unidades as IEnumerable<SelectListItem>
-                            ,"Unidade",new { @class = "form-control" })
-                    </td>
+    <td>
+        @Html.EditorFor(m => Model.Quantidade , new { @class = "form-control", @data_val_date="O campo deve ser um número" })
+    </td>
 
 
-                    <td>
-                        @Html.EditorFor(m => Model[i].Preco , new { @class = "form-control" })
-                    </td>
-                </tr>
-            }
-            </table>
-    </div>
+    <td>
+        @Html.DropDownListFor(m => Model.IdUnidade, ViewBag.Unidades as IEnumerable<SelectListItem>
+            ,"Unidade",new { @class = "form-control" })
+    </td>
+
+
+    <td>
+        @Html.EditorFor(m => Model.Preco , new { @class = "form-control", @data_val_date="O campo deve ser um número" })
+    </td>
+
+    <td>
+        <div class="btn btn-default remover">
+            <i class="glyphicon glyphicon-trash">
+            </i>
+        </div>
+    </td>
+</tr>

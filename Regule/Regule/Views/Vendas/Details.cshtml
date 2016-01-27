@@ -42,29 +42,25 @@
             @Html.DisplayFor(model => model.Data)
         </dd>
     </dl>
-    <table class="table table-hover">
-        <tr>
-            <th>
-                Produtos
-            </th>
-
-            <th>
-                Quantidades
-            </th>
-        </tr>
-        @foreach (var item in Model.VendaProdutos)
-        {
-        <tr>
-            <td>
-                @Html.DisplayFor(eaitem => item.Produto.Nome)
-            </td>
-
-            <td>
-                @Html.DisplayFor(eaitem => item.Quantidade) @Html.DisplayFor(eaitem => item.Unidade.Sigla)
-            </td>
-        </tr>
-        }
-    </table>
+    <div class="panel panel-default">
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    Produto
+                </th>
+                <th>
+                    Quantidade
+                </th>
+                <th>
+                    Unidade
+                </th>
+                <th>
+                    Preço
+                </th>
+            </tr>
+            @Html.DisplayFor(model=>model.VendaProdutos)
+        </table>
+    </div>
 </div>
 <p>
     @Html.ActionLink("Deletar", "Delete", new { id = Model.Id}) |

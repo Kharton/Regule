@@ -7,7 +7,7 @@
                 
 
                     <td>
-                        @Html.EditorFor(m => Model.Quantidade , new { @class = "form-control" })
+                        @Html.EditorFor(m => Model.Quantidade , new { @class = "form-control", @data_val_date="O campo deve ser um número" })
                     </td>
 
 
@@ -18,7 +18,7 @@
 
 
                     <td>
-                        @Html.EditorFor(m => Model.Preco , new { @class = "form-control" })
+                        @Html.EditorFor(m => Model.Preco , new { @class = "form-control", @data_val_date="O campo deve ser um número" })
                     </td>
                     
                     <td>

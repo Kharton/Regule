@@ -43,16 +43,26 @@
             @Html.DisplayFor(model => model.Data)
         </dd>
     </dl>
-    <ol>
-        @Html.DisplayNameFor(model => model.VendaProdutos)
-        @foreach (var item in Model.VendaProdutos)
-        {
-        <li>
-            @Html.DisplayFor(i => item.Produto.Nome) - > @Html.DisplayFor(i => item.Quantidade)
-        </li>
-        }
-    </ol>
 
+    <div class="panel panel-default">
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    Produto
+                </th>
+                <th>
+                    Quantidade
+                </th>
+                <th>
+                    Unidade
+                </th>
+                <th>
+                    Preço
+                </th>
+            </tr>
+            @Html.DisplayFor(model=>model.VendaProdutos)
+        </table>
+    </div>
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
