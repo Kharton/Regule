@@ -3,10 +3,11 @@
 @{
     ViewBag.Title = "Pessoas Físicas";
 }
-    
-@Html.ActionLink("Novo", "Create")
-
+   
 <h2>Pessoas Fisicas</h2>
+<p>
+    @Html.ActionLink("Novo", "Create", null, new { @class = "btn btn-default" })
+</p>
 <table class="table">
     <tr>
         <th>
