@@ -299,6 +299,13 @@
     <Content Include="Views\Vendas\EditorTemplates\VendaProduto.cshtml" />
     <Content Include="Views\Vendas\DisplayTemplates\VendaProduto.cshtml" />
     <Content Include="Views\Compras\DisplayTemplates\CompraProduto.cshtml" />
+    <Content Include="Views\Funcionarios\Index.cshtml" />
+    <Content Include="Views\Funcionarios\Create.cshtml" />
+    <Content Include="Views\Funcionarios\Delete.cshtml" />
+    <Content Include="Views\Funcionarios\Details.cshtml" />
+    <Content Include="Views\Funcionarios\Edit.cshtml" />
+    <Content Include="Views\Funcionarios\DisplayTemplates\Pagamento.cshtml" />
+    <Content Include="Views\Funcionarios\EditorTemplates\Pagamento.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

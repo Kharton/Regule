@@ -37,13 +37,17 @@ namespace Regule.Controllers
         // GET: Funcionarios/Create
         public ActionResult Create()
         {
-            return View();
+            Funcionario Fun = new Funcionario();
+            Fun.Pagamentos.Add(new Pagamento());
+            IEnumerable<Pessoa> pessoas = db.Pessoas.Where(x => x.Fisica != null && x.Fisica.Funcionario == null).ToList();
+            ViewBag.Pessoas = pessoas.Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
+            return View(Fun);
         }
 
         // POST: Funcionarios/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Nome,Fornecedor")] Funcionario Func)
+        public ActionResult Create([Bind(Include = "Id,Dirige,CarteiraTrb,Observacao,RG,Salario,Tecnico,Pagamentos")] Funcionario Func)
         {
             if (ModelState.IsValid)
             {
@@ -67,13 +71,17 @@ namespace Regule.Controllers
             {
                 return HttpNotFound();
             }
+            if (Func.Pagamentos.Count < 1)
+            {
+                Func.Pagamentos.Add(new Pagamento());
+            }
             return View(Func);
         }
 
         // POST: Funcionarios/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome,Fornecedor")] Funcionario Func)
+        public ActionResult Edit([Bind(Include = "Id,Fisica,Dirige,CarteiraTrb,Observacao,RG,Salario,Tecnico,Pagamentos")] Funcionario Func)
         {
             if (ModelState.IsValid)
             {
@@ -84,6 +92,9 @@ namespace Regule.Controllers
                 tp.RG = Func.RG;
                 tp.Salario = Func.Salario;
                 tp.Tecnico = Func.Tecnico;
+                tp.Pagamentos = Func.Pagamentos;
+                tp.Fisica.CPF = Func.Fisica.CPF;
+                tp.Fisica.Pessoa.Nome = Func.Fisica.Pessoa.Nome;
                 db.SubmitChanges();
                 return RedirectToAction("Index");
             }

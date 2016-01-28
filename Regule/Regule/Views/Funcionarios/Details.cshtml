@@ -1,0 +1,74 @@
+﻿@model Regule.Models.Funcionario
+
+@{
+    ViewBag.Title = "Vendas";
+}
+
+<h2>Funcionário</h2>
+
+<div>
+    <h4>Funcionário</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fisica.Pessoa.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fisica.Pessoa.Nome)
+        </dd>  
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CarteiraTrb)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CarteiraTrb)
+        </dd>  
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RG)
+        </dd>     
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fisica.CPF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fisica.CPF)
+        </dd>
+    </dl>
+    <div class="panel panel-default">
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    Data
+                </th>
+                <th>
+                    Referência
+                </th>
+                <th>
+                    Valor
+                </th>
+            </tr>
+            @Html.DisplayFor(model=>model.Pagamentos)
+        </table>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Deletar", "Delete", new { id = Model.Id}) |
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar a listagem", "Index")
+</p>

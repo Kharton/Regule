@@ -1357,9 +1357,9 @@ namespace Regule.Models
 
         private string _CarteiraTrb;
 
-        private System.Nullable<bool> _Dirige;
+        private bool _Dirige;
 
-        private System.Nullable<bool> _Tecnico;
+        private bool _Tecnico;
 
         private string _Observacao;
 
@@ -1479,7 +1479,7 @@ namespace Regule.Models
         }
 
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Dirige", DbType = "Bit")]
-        public System.Nullable<bool> Dirige
+        public bool Dirige
         {
             get
             {
@@ -1499,7 +1499,7 @@ namespace Regule.Models
         }
 
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Tecnico", DbType = "Bit")]
-        public System.Nullable<bool> Tecnico
+        public bool Tecnico
         {
             get
             {

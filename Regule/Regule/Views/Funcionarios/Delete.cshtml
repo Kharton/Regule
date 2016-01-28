@@ -1,0 +1,116 @@
+﻿@model Regule.Models.Funcionario
+
+@{
+    ViewBag.Title = "Deletar";
+}
+
+<h2>Deletar</h2>
+
+<h3>Esta certo que deseja deletar?</h3>
+<div>
+    <h4>Funcionário</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fisica.Pessoa.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fisica.Pessoa.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fisica.CPF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fisica.CPF)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CarteiraTrb)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CarteiraTrb)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Salario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Salario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tecnico)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tecnico)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dirige)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dirige)
+        </dd>
+    </dl>
+    <div class="panel panel-default">
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    Data
+                </th>
+                <th>
+                    Referência
+                </th>
+                <th>
+                    Valor
+                </th>
+                <th>
+                    <div class="btn btn-default adicionar">
+                        <i class="glyphicon glyphicon-plus-sign"></i>
+                    </div>
+                </th>
+            </tr>
+            @Html.DisplayFor(model=>model.Pagamentos, new { htmlAttributes = new { @class = "form-control" } })
+        </table>
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Deletar" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar a lisagem", "Index")
+        </div>
+    }
+</div>

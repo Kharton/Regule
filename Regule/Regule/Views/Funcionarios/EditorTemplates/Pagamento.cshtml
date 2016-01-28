@@ -1,0 +1,23 @@
+﻿@model Regule.Models.Pagamento
+                <tr class="re-item">
+                    <td>
+                        @Html.EditorFor(m => Model.Data,new { @class = "form-control", @data_val_date="O campo deve ser uma Data" })
+                    </td>
+                
+
+                    <td>
+                        @Html.EditorFor(m => Model.Referencia , new { @class = "form-control", @data_val_date="O campo deve ser uma Data" })
+                    </td>
+
+
+                    <td>
+                        @Html.EditorFor(m => Model.Valor,new { @class = "form-control", @data_val_date="O campo deve ser um Número" })
+                    </td>
+                    
+                    <td>
+                        <div class="btn btn-default remover" >
+                            <i class="glyphicon glyphicon-trash">
+                            </i>
+                        </div>
+                    </td>
+                </tr>
