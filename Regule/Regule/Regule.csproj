@@ -178,7 +178,7 @@
     <Compile Include="Controllers\PessoasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\PFisicasController.cs" />
+    <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\PJuridicasControllers.cs" />
     <Compile Include="Controllers\ProdutosController.cs" />
     <Compile Include="Controllers\UnidadesController.cs" />
@@ -275,11 +275,11 @@
     <Content Include="Views\Pessoas\Details.cshtml" />
     <Content Include="Views\Pessoas\Edit.cshtml" />
     <Content Include="Views\Pessoas\Index.cshtml" />
-    <Content Include="Views\PFisicas\Create.cshtml" />
-    <Content Include="Views\PFisicas\Delete.cshtml" />
-    <Content Include="Views\PFisicas\Details.cshtml" />
-    <Content Include="Views\PFisicas\Edit.cshtml" />
-    <Content Include="Views\PFisicas\Index.cshtml" />
+    <Content Include="Views\Clientes\Create.cshtml" />
+    <Content Include="Views\Clientes\Delete.cshtml" />
+    <Content Include="Views\Clientes\Details.cshtml" />
+    <Content Include="Views\Clientes\Edit.cshtml" />
+    <Content Include="Views\Clientes\Index.cshtml" />
     <Content Include="Views\PJuridicas\Create.cshtml" />
     <Content Include="Views\PJuridicas\Delete.cshtml" />
     <Content Include="Views\PJuridicas\Details.cshtml" />
@@ -305,7 +305,8 @@
     <Content Include="Views\Funcionarios\Details.cshtml" />
     <Content Include="Views\Funcionarios\Edit.cshtml" />
     <Content Include="Views\Funcionarios\DisplayTemplates\Pagamento.cshtml" />
-    <Content Include="Views\Funcionarios\EditorTemplates\Pagamento.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CliComunicar.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CliComunicar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

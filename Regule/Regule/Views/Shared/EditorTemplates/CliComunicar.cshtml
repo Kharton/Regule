@@ -1,0 +1,21 @@
+﻿@model Regule.Models.CliComunicar
+                <tr class="re-item">
+                    <td>
+                        @Html.EditorFor(m => Model.Tel,new { @class = "form-control" })
+                    </td>
+                
+
+                    <td>
+                        <label>
+                            @Html.CheckBoxFor(m => Model.Principal)
+                            Primário
+                        </label>
+                    </td>
+                    
+                    <td>
+                        <div class="btn btn-default remover" >
+                            <i class="glyphicon glyphicon-trash">
+                            </i>
+                        </div>
+                    </td>
+                </tr>

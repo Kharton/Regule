@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Regule.Models.Fisica>
+﻿@model IEnumerable<Regule.Models.Pessoa>
 
 @{
     ViewBag.Title = "Pessoas Físicas";
@@ -14,15 +14,19 @@
             @Html.DisplayNameFor(model => model.Id)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Pessoa.Nome)
+            @Html.DisplayNameFor(model => model.Nome)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CPF)
+            @Html.DisplayNameFor(model => model.Cidade)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Pessoa.Fornecedor)
+            @Html.DisplayNameFor(model => model.Estado)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.CliComunicars)
+        </th>
+        <th>
+
         </th>
     </tr>
 
@@ -33,13 +37,16 @@
                 @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Pessoa.Nome)
+                @Html.DisplayFor(modelItem => item.Nome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CPF)
+                @Html.DisplayFor(modelItem => item.Cidade)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Pessoa.Fornecedor)
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CliComunicars)
             </td>
             <td>
                 <span class="btn-group">

@@ -3,10 +3,8 @@
   <Table Name="dbo.CliComunicar" Member="CliComunicars">
     <Type Name="CliComunicar">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Principal" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Valor" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Ordem" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="Tel" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Principal" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Tel" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="IdPessoa" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Pessoa_CliComunicar" Member="Pessoa" ThisKey="IdPessoa" OtherKey="Id" Type="Pessoa" IsForeignKey="true" />
     </Type>
@@ -59,8 +57,8 @@
       <Column Name="RG" Type="System.String" DbType="Char(9)" CanBeNull="true" />
       <Column Name="Salario" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="CarteiraTrb" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Dirige" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Tecnico" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Dirige" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Tecnico" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="Observacao" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
       <Association Name="Funcionario_Pagamento" Member="Pagamentos" ThisKey="Id" OtherKey="IdFun" Type="Pagamento" />
       <Association Name="Fisica_Funcionario" Member="Fisica" ThisKey="Id" OtherKey="Id" Type="Fisica" IsForeignKey="true" />
@@ -82,18 +80,6 @@
       <Column Name="Valor" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Association Name="Funcionario_Pagamento" Member="Funcionario" ThisKey="IdFun" OtherKey="Id" Type="Funcionario" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Pessoa" Member="Pessoas">
-    <Type Name="Pessoa">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Nome" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
-      <Column Name="Fornecedor" Type="System.Boolean" DbType="Bit" CanBeNull="false" />
-      <Association Name="Pessoa_CliComunicar" Member="CliComunicars" ThisKey="Id" OtherKey="IdPessoa" Type="CliComunicar" />
-      <Association Name="Pessoa_Compra" Member="Compras" ThisKey="Id" OtherKey="IdPessoa" Type="Compra" />
-      <Association Name="Pessoa_Fisica" Member="Fisica" ThisKey="Id" OtherKey="Id" Type="Fisica" Cardinality="One" />
-      <Association Name="Pessoa_Juridica" Member="Juridica" ThisKey="Id" OtherKey="Id" Type="Juridica" Cardinality="One" />
-      <Association Name="Pessoa_Venda" Member="Vendas" ThisKey="Id" OtherKey="IdPessoa" Type="Venda" />
     </Type>
   </Table>
   <Table Name="dbo.Produto" Member="Produtos">
@@ -121,6 +107,21 @@
       <Column Name="Desconto" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Association Name="Venda_VendaProduto" Member="VendaProdutos" ThisKey="Id" OtherKey="IdVend" Type="VendaProduto" />
       <Association Name="Pessoa_Venda" Member="Pessoa" ThisKey="IdPessoa" OtherKey="Id" Type="Pessoa" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Pessoa" Member="Pessoas">
+    <Type Name="Pessoa">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nome" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Fornecedor" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Endereco" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Cidade" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Association Name="Pessoa_CliComunicar" Member="CliComunicars" ThisKey="Id" OtherKey="IdPessoa" Type="CliComunicar" />
+      <Association Name="Pessoa_Compra" Member="Compras" ThisKey="Id" OtherKey="IdPessoa" Type="Compra" />
+      <Association Name="Pessoa_Fisica" Member="Fisica" ThisKey="Id" OtherKey="Id" Type="Fisica" Cardinality="One" />
+      <Association Name="Pessoa_Juridica" Member="Juridica" ThisKey="Id" OtherKey="Id" Type="Juridica" Cardinality="One" />
+      <Association Name="Pessoa_Venda" Member="Vendas" ThisKey="Id" OtherKey="IdPessoa" Type="Venda" />
     </Type>
   </Table>
 </Database>

@@ -19,18 +19,20 @@ function action(el, tipo) {
         for (var i = 1; i < tabela.children.length; i++) {
             var y = tabela.children[i];
             for (var j = 0; j < y.children.length - 1; j++) {
-                y.children[j].children[0].name = y.children[j].children[0].name.replace(/[0-9]+/, i - 1);
-                y.children[j].children[0].id = y.children[j].children[0].id.replace(/[0-9]+/, i-1);
+                var x = y.children[j].querySelector('[name]');
+                x.name = x.name.replace(/[0-9]+/, i - 1);
+                x.id = x.id.replace(/[0-9]+/, i - 1);
             }
         }
 
     } else if (tipo == 2) {
         y = document.querySelector('.sample tbody tr').cloneNode();
         y.innerHTML = document.querySelector('.sample tbody tr').innerHTML;
-        for (var i = 0; i < y.children.length-1; i++) {
-            y.children[i].children[0].name = y.children[i].children[0].name.replace(/[0-9]+/, indice);
-            y.children[i].children[0].value = null;
-            y.children[i].children[0].id = y.children[i].children[0].id.replace(/[0-9]+/, indice);
+        for (var i = 0; i < y.children.length - 1; i++) {
+            var x = y.children[i].querySelector('[name]');
+            x.name = x.name.replace(/[0-9]+/, indice);
+            x.value = null;
+            x.id = x.id.replace(/[0-9]+/, indice);
         }
         y.querySelector('.remover').addEventListener('click', function () {
             action(this, 1);

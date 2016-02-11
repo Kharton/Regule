@@ -8,24 +8,24 @@ using System.Web.Mvc;
 
 namespace Regule.Controllers
 {
-    public class PFisicasController : Controller
+    public class ClientesController : Controller
     {
         private ReguleDataContext db = new ReguleDataContext();
 
-        // GET: Fisicas
+        // GET: Pessoas
         public ActionResult Index()
         {
-            return View(db.Fisicas.ToList());
+            return View(db.Pessoas.Where(x=>x.Fornecedor==false).ToList());
         }
 
-        // GET: Fisicas/Details/5
+        // GET: Pessoas/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Fisica Fisi = db.Fisicas.FirstOrDefault(x => x.Id == id);
+            Pessoa Fisi = db.Pessoas.FirstOrDefault(x => x.Id == id);
             if (Fisi == null)
             {
                 return HttpNotFound();
@@ -33,20 +33,21 @@ namespace Regule.Controllers
             return View(Fisi);
         }
 
-        // GET: Fisicas/Create
+        // GET: Pessoas/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Fisicas/Create
+        // POST: Pessoas/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Pessoa,CPF")] Fisica Fisi)
+        public ActionResult Create([Bind(Include = "Fisica,Juridica")] Pessoa Fisi)
         {
             if (ModelState.IsValid)
             {
-                db.Fisicas.InsertOnSubmit(Fisi);
+                Fisi.Fornecedor = false;
+                db.Pessoas.InsertOnSubmit(Fisi);
                 db.SubmitChanges();
                 return RedirectToAction("Index");
             }
@@ -54,14 +55,14 @@ namespace Regule.Controllers
             return View(Fisi);
         }
 
-        // GET: Fisicas/Edit/5
+        // GET: Pessoas/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Fisica Fisi = db.Fisicas.FirstOrDefault(x => x.Id == id);
+            Pessoa Fisi = db.Pessoas.FirstOrDefault(x => x.Id == id);
             if (Fisi == null)
             {
                 return HttpNotFound();
@@ -69,44 +70,44 @@ namespace Regule.Controllers
             return View(Fisi);
         }
 
-        // POST: Fisicas/Edit/5
+        // POST: Pessoas/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Pessoa,CPF")] Fisica Fisi)
+        public ActionResult Edit([Bind(Include = "Id,Fisica,Juridica")] Pessoa Fisi)
         {
             if (ModelState.IsValid)
             {
-                Fisica tp = db.Fisicas.FirstOrDefault(x => x.Id == Fisi.Id);
-                tp.CPF= Fisi.CPF;
-                tp.Pessoa.Fornecedor = Fisi.Pessoa.Fornecedor;
-                tp.Pessoa.Nome = Fisi.Pessoa.Nome;
+                Pessoa tp = db.Pessoas.FirstOrDefault(x => x.Id == Fisi.Id);
+                //tp.CPF= Fisi.CPF;
+                //tp.Pessoa.Fornecedor = Fisi.Pessoa.Fornecedor;
+                //tp.Pessoa.Nome = Fisi.Pessoa.Nome;
                 db.SubmitChanges();
                 return RedirectToAction("Index");
             }
             return View(Fisi);
         }
 
-        // GET: Fisicas/Delete/5
+        // GET: Pessoas/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Fisica Fisi = db.Fisicas.FirstOrDefault(x => x.Id == id);
+            Pessoa Fisi = db.Pessoas.FirstOrDefault(x => x.Id == id);
             if (Fisi == null)
             {
                 return HttpNotFound();
             }
             return View(Fisi);
         }
-        // POST: Fisicas/Delete/5
+        // POST: Pessoas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Fisica Fisi = db.Fisicas.FirstOrDefault(x => x.Id == id);
-            db.Fisicas.DeleteOnSubmit(Fisi);
+            Pessoa Fisi = db.Pessoas.FirstOrDefault(x => x.Id == id);
+            db.Pessoas.DeleteOnSubmit(Fisi);
             db.SubmitChanges();
             return RedirectToAction("Index");
         }

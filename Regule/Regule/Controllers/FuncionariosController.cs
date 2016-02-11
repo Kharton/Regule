@@ -71,9 +71,9 @@ namespace Regule.Controllers
             {
                 return HttpNotFound();
             }
-            if (Func.Pagamentos.Count < 1)
+            if (Func.Fisica.Pessoa.CliComunicars.Count< 1)
             {
-                Func.Pagamentos.Add(new Pagamento());
+                Func.Fisica.Pessoa.CliComunicars.Add(new CliComunicar());
             }
             return View(Func);
         }
