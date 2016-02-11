@@ -275,7 +275,6 @@
     <Content Include="Views\Pessoas\Details.cshtml" />
     <Content Include="Views\Pessoas\Edit.cshtml" />
     <Content Include="Views\Pessoas\Index.cshtml" />
-    <Content Include="Views\Clientes\Create.cshtml" />
     <Content Include="Views\Clientes\Delete.cshtml" />
     <Content Include="Views\Clientes\Details.cshtml" />
     <Content Include="Views\Clientes\Edit.cshtml" />
@@ -307,6 +306,7 @@
     <Content Include="Views\Funcionarios\DisplayTemplates\Pagamento.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\CliComunicar.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CliComunicar.cshtml" />
+    <Content Include="Views\Clientes\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
