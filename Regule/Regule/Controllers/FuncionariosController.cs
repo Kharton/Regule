@@ -38,7 +38,9 @@ namespace Regule.Controllers
         public ActionResult Create()
         {
             Funcionario Fun = new Funcionario();
-            Fun.Pagamentos.Add(new Pagamento());
+            Fun.Fisica = new Fisica();
+            Fun.Fisica.Pessoa = new Pessoa();
+            Fun.Fisica.Pessoa.CliComunicars.Add(new CliComunicar());
             IEnumerable<Pessoa> pessoas = db.Pessoas.Where(x => x.Fisica != null && x.Fisica.Funcionario == null).ToList();
             ViewBag.Pessoas = pessoas.Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
             return View(Fun);
@@ -47,7 +49,7 @@ namespace Regule.Controllers
         // POST: Funcionarios/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Dirige,CarteiraTrb,Observacao,RG,Salario,Tecnico,Pagamentos")] Funcionario Func)
+        public ActionResult Create([Bind(Include = "Fisica,Id,Dirige,CarteiraTrb,Observacao,RG,Salario,Tecnico,Pagamentos")] Funcionario Func)
         {
             if (ModelState.IsValid)
             {
