@@ -1,0 +1,143 @@
+﻿@model Regule.Models.Pessoa
+
+@{
+    ViewBag.Title = "Editar";
+    string hd = "hidden";
+}
+
+<h2>Editar</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Fornecedor</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        <div class="row">
+            <div class="form-group col-md-5">
+                @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control"} })
+                    @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group col-md-3">
+                @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control"} })
+                    @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Cidade, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Cidade, new { htmlAttributes = new { @class = "form-control"} })
+                    @Html.ValidationMessageFor(model => model.Cidade, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Endereco, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Endereco, new { htmlAttributes = new { @class = "form-control"} })
+                @Html.ValidationMessageFor(model => model.Endereco, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label class="control-label col-sm-4">
+                    @if(Model.Fisica!=null &&Model.Fisica.CPF !=null){
+                        <input type="radio" name="cpf" checked value="cpf" />
+                    }else
+                    {
+                        <input type="radio" name="cpf" value="cpf" />
+                    }
+                    CPF
+                </label>
+                <label class="control-label col-sm-5">
+                    @if(Model.Juridica!=null&&Model.Juridica.CNPJ !=null){
+                        <input type="radio" name="cpf" checked value="cnpj" />
+                    }else
+                    {
+                        <input type="radio" name="cpf" value="cnpj" />
+                    }
+                    CNPJ
+                </label>
+            </div>             
+            <div class="form-group col-md-4 @if(Model.Fisica==null||Model.Fisica.CPF ==null){@hd;}">
+                @Html.LabelFor(model => model.Fisica.CPF, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Fisica.CPF, new { htmlAttributes = new { @class = "form-control", @data_val_number="O campo deve ser um Número"} })
+                    @Html.ValidationMessageFor(model => model.Fisica.CPF, "", new { @class = "text-danger" })
+                </div>
+            </div>
+                                 
+                <div class="form-group col-md-4 @if(Model.Juridica==null||Model.Juridica.CNPJ==null){@hd;}">
+                @Html.LabelFor(model => model.Juridica.CNPJ, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Juridica.CNPJ, new { htmlAttributes = new { @class = "form-control", @data_val_number="O campo deve ser um Número"} })
+                    @Html.ValidationMessageFor(model => model.Juridica.CNPJ, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control",@type="email", @data_val_email="O campo deve ser um email"} })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+        <div class="panel panel-default">
+            <table class="table table-hover">
+                <tr>
+                    <th>
+                        Número
+                    </th>
+                    <th>
+                        Principal
+                    </th>
+                    <th>
+                        <div class="btn btn-default adicionar">
+                            <i class="glyphicon glyphicon-plus-sign"></i>
+                        </div>
+                    </th>
+                </tr>
+                @Html.EditorFor(model=>model.CliComunicars, new { htmlAttributes = new { @class = "form-control" } })
+            </table>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Salvar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Voltar a listagem", "Index")
+</div>
+
+
+
+@section scripts{
+    @if(Model.Juridica !=null && Model.Juridica.CNPJ != null){     
+    <script>
+            document.querySelector('input[name$=CPF]').value = '00000000000';
+    </script>
+    }else{
+    <script>
+        document.querySelector('input[name$=CNPJ]').value = '00000000000000';
+    </script>
+    }
+}

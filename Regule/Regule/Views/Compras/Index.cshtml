@@ -7,6 +7,36 @@
 <p>
     @Html.ActionLink("Novo", "Create", null, new { @class = "btn btn-default" })
 </p>
+    @using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label class="control-label">
+            Funcionário
+        </label>
+        @Html.DropDownListFor(model => model.First().IdPessoa, ViewBag.Fornecedores as IEnumerable<SelectListItem>
+            ,"Selecione...",new { @class = "form-control",@data_val="false" })
+    </div>
+    <div class="form-group">
+        <label class="control-label">
+            Período
+        </label> 
+        <input class="form-control" type="date" id="Data" name="Data"/>
+</div>
+    
+    <div class="form-group">
+        <label class="control-label">
+            Produto
+        </label>        
+        @Html.DropDownListFor(model => model.First().CompraProdutos[0].IdPro, ViewBag.Produtos as IEnumerable<SelectListItem>
+            ,"Selecione...",new { @class = "form-control",@data_val="false" })
+        @Html.ValidationMessageFor(model => model.First().CompraProdutos[0].IdPro, "", new { @class = "text-danger" })
+    </div>
+    <input type="submit" value="Pesquisar" class="btn btn-default"/>
+}
+<hr />
+
 <table class="table">
     <tr>
         <th>

@@ -1,0 +1,92 @@
+﻿@model Regule.Models.Pessoa
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Fornecedor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            CPF/CNPJ
+        </dt>
+
+        <dd>
+            @if(Model.Fisica!=null){
+            @Html.DisplayFor(model => model.Fisica.CPF)
+            }else{
+            @Html.DisplayFor(model => model.Juridica.CNPJ)
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+    </dl>
+
+    <div class="panel panel-default">
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    Número
+                </th>
+                <th>
+                    Principal
+                </th>
+            </tr>
+            @Html.DisplayFor(model=>model.CliComunicars, new { htmlAttributes = new { @class = "form-control" } })
+        </table>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Deletar", "Delete", new { id = Model.Id}) |
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar a listagem", "Index")
+</p>

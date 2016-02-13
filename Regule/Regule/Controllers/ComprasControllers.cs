@@ -15,7 +15,28 @@ namespace Regule.Controllers
         // GET: Compras
         public ActionResult Index()
         {
+            ViewBag.Fornecedores = db.Pessoas.Where(x => x.Fornecedor == true).Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
+            ViewBag.Produtos = db.Produtos.Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
+            List<Compra> ret = db.Compras.ToList();
+            if (ret == null)
+                ret.Add(new Compra());
             return View(db.Compras.ToList());
+        }
+
+        // Post: Compras
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index([Bind(Include = "Data,IdPessoa,CompraProdutos")] Compra Fisi)
+        {
+            ViewBag.Fornecedores = db.Pessoas.Where(x => x.Fornecedor == true).Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
+            ViewBag.Produtos = db.Produtos.Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
+            IEnumerable<Compra> fun = db.Compras.Where(x => x.IdPessoa == Fisi.IdPessoa);
+            if (Fisi.Data!= null)
+                fun = fun.Where(x => x.Data == Fisi.Data);
+            if (Fisi.CompraProdutos[0] != null && Fisi.CompraProdutos[0].IdPro != 0)
+                fun = fun.Where(x => x.CompraProdutos.Where(y => y.IdPro == Fisi.CompraProdutos[0].IdPro).Count() > 0);
+            
+            return View(fun);
         }
 
         // GET: Compras/Details/5
