@@ -31,7 +31,7 @@
         <label class="control-label">
             Produto
         </label>        
-        @Html.DropDownListFor(model => model.First().CompraProdutos[0].IdPro, ViewBag.Produtos as IEnumerable<SelectListItem>
+        @Html.DropDownListFor(model => model.First().VendaProdutos[0].IdPro, ViewBag.Produtos as IEnumerable<SelectListItem>
             ,"Selecione...",new { @class = "form-control",@data_val="false" })
         @Html.ValidationMessageFor(model => model.First().VendaProdutos[0].IdPro, "", new { @class = "text-danger" })
     </div>
