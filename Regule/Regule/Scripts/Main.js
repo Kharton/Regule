@@ -34,8 +34,13 @@ function action(el, tipo) {
         el.parentElement.parentElement.remove();
         for (var i = 1; i < tabela.children.length; i++) {
             var y = tabela.children[i];
-            for (var j = 0; j < y.children.length - 1; j++) {
+            for (var j = 0; j < y.children.length; j++) {
                 var x = y.children[j].querySelector('[name]');
+                if (j == y.children.length - 1 && x) {
+                    x.name = x.name.replace(/[0-9]+/, i - 1);
+                    x.id = x.id.replace(/[0-9]+/, i - 1);
+                    break;
+                }
                 x.name = x.name.replace(/[0-9]+/, i - 1);
                 x.id = x.id.replace(/[0-9]+/, i - 1);
             }

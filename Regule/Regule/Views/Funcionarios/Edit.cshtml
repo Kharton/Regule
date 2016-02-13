@@ -57,7 +57,7 @@
             <div class="form-group col-md-4">
                 @Html.LabelFor(model => model.Salario, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Salario, new { htmlAttributes = new { @class = "form-control", @data_val_number="O campo deve ser um Número"} })
+                    @Html.EditorFor(model => model.Salario, new { htmlAttributes = new { @class = "form-control", @data_val_number="O campo deve ser um Número", @data_val="true"} })
                     @Html.ValidationMessageFor(model => model.Salario, "", new { @class = "text-danger" })
                 </div>
             </div>
