@@ -49,7 +49,7 @@ namespace Regule.Controllers
         // POST: Funcionarios/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Fisica,Id,Dirige,CarteiraTrb,Observacao,RG,Salario,Tecnico,Pagamentos")] Funcionario Func)
+        public ActionResult Create([Bind(Include = "Fisica,Id,Dirige,CarteiraTrb,Observacao,RG,Salario,Tecnico")] Funcionario Func)
         {
             if (ModelState.IsValid)
             {
@@ -83,11 +83,12 @@ namespace Regule.Controllers
         // POST: Funcionarios/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Fisica,Dirige,CarteiraTrb,Observacao,RG,Salario,Tecnico,Pagamentos")] Funcionario Func)
-        {
+        public ActionResult Edit([Bind(Include = "Id,Fisica,Id,Dirige,CarteiraTrb,Observacao,RG,Salario,Tecnico")] Funcionario Func)
+        {            
             if (ModelState.IsValid)
             {
                 Funcionario tp = db.Funcionarios.FirstOrDefault(x => x.Id == Func.Id);
+                List<CliComunicar> cf = db.CliComunicars.Where(x => x.IdPessoa == Func.Id).ToList();
                 tp.Dirige = Func.Dirige;
                 tp.CarteiraTrb = Func.CarteiraTrb;
                 tp.Observacao = Func.Observacao;
@@ -95,8 +96,22 @@ namespace Regule.Controllers
                 tp.Salario = Func.Salario;
                 tp.Tecnico = Func.Tecnico;
                 tp.Pagamentos = Func.Pagamentos;
-                tp.Fisica.CPF = Func.Fisica.CPF;
+                tp.Fisica.Pessoa.CliComunicars = Func.Fisica.Pessoa.CliComunicars;
                 tp.Fisica.Pessoa.Nome = Func.Fisica.Pessoa.Nome;
+                foreach (CliComunicar tel in db.CliComunicars.Where(x=>x.IdPessoa == Func.Id))
+                {
+                    CliComunicar tpc = Func.Fisica.Pessoa.CliComunicars.Where(X => X.Id == tel.Id).FirstOrDefault();
+                    if(tpc==null)
+                    {
+                        CliComunicar t = db.CliComunicars.Where(x => x.Id == tel.Id).FirstOrDefault();
+                        db.CliComunicars.DeleteOnSubmit(t);
+                    }
+                    else
+                    {
+                        tel.Tel = tpc.Tel;
+                        tel.Principal = tpc.Principal;
+                    }
+                }
                 db.SubmitChanges();
                 return RedirectToAction("Index");
             }

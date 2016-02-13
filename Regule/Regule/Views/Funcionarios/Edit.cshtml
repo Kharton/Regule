@@ -18,68 +18,89 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Fisica.Pessoa.Id)
-        <div class="form-group">
-            @Html.LabelFor(model => model.Fisica.Pessoa.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Fisica.Pessoa.Nome,new { htmlAttributes = new { @class = "form-control", @data_val_number="O campo deve ser um Número"} })
-                @Html.ValidationMessageFor(model => model.Fisica.Pessoa.Nome, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="form-group col-md-5">
+                @Html.LabelFor(model => model.Fisica.Pessoa.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Fisica.Pessoa.Nome, new { htmlAttributes = new { @class = "form-control"} })
+                    @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
+                </div>
             </div>
+
+            <div class="form-group col-md-3">
+                @Html.LabelFor(model => model.Fisica.Pessoa.Estado, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.Fisica.Pessoa.Estado, new { htmlAttributes = new { @class = "form-control"} })
+                    @Html.ValidationMessageFor(model => model.Fisica.Pessoa.Estado, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Fisica.Pessoa.Cidade, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Fisica.Pessoa.Cidade, new { htmlAttributes = new { @class = "form-control"} })
+                    @Html.ValidationMessageFor(model => model.Fisica.Pessoa.Cidade, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Fisica.CPF, htmlAttributes: new { @class = "control-label col-md-2" })
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Fisica.Pessoa.Endereco, htmlAttributes: new { @class = "control-label col-md-1" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Fisica.CPF, new { htmlAttributes = new { @class = "form-control", @data_val_number="O campo deve ser um Número"} })
-                @Html.ValidationMessageFor(model => model.Fisica.CPF, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Fisica.Pessoa.Endereco, new { htmlAttributes = new { @class = "form-control"} })
+                @Html.ValidationMessageFor(model => model.Fisica.Pessoa.Endereco, "", new { @class = "text-danger" })
             </div>
         </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Salario, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Salario, new { htmlAttributes = new { @class = "form-control", @data_val_number="O campo deve ser um Número"} })
+                    @Html.ValidationMessageFor(model => model.Salario, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CarteiraTrb, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CarteiraTrb, new { htmlAttributes = new { @class = "form-control", @data_val_number="O campo deve ser um Número"} })
-                @Html.ValidationMessageFor(model => model.CarteiraTrb, "", new { @class = "text-danger" })
+            <div class="form-group col-md-5">
+                @Html.LabelFor(model => model.CarteiraTrb, htmlAttributes: new { @class = "control-label col-md-5" })
+                <div class="col-md-7">
+                    @Html.EditorFor(model => model.CarteiraTrb, new { htmlAttributes = new { @class = "form-control", @data_val_numero="O campo deve ser um Número"} })
+                    @Html.ValidationMessageFor(model => model.CarteiraTrb, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group col-md-3">
+                @Html.LabelFor(model => model.RG, htmlAttributes: new { @class = "control-label col-md-1" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.RG, new { htmlAttributes = new { @class = "form-control", @data_val_number="O campo deve ser um Número"} })
+                    @Html.ValidationMessageFor(model => model.RG, "", new { @class = "text-danger" })
+                </div>
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.RG, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Observacao, htmlAttributes: new { @class = "control-label col-md-1" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.RG, new { htmlAttributes = new { @class = "form-control", @data_val_number="O campo deve ser um Número"} })
-                @Html.ValidationMessageFor(model => model.RG, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Salario, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Salario, new { htmlAttributes = new { @class = "form-control", @data_val_number="O campo deve ser um Número"} })
-                @Html.ValidationMessageFor(model => model.Salario, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Observacao, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Observacao, new { htmlAttributes = new { @class = "form-control", @data_val_date="O campo deve ser um Número"} })
+                @Html.EditorFor(model => model.Observacao, new { htmlAttributes = new { @class = "form-control"} })
                 @Html.ValidationMessageFor(model => model.Observacao, "", new { @class = "text-danger" })
             </div>
         </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label class="control-label col-md-12">
+                    @Html.CheckBoxFor(model => model.Tecnico, new { htmlAttributes = new { @class = "form-control col-md-2" } })
+                    Marque se for um Técnico
+                </label>
+                @Html.ValidationMessageFor(model => model.Tecnico, "", new { @class = "text-danger" })
+            </div>
 
-        <div class="form-group">
-            <label class="control-label col-md-offset-2">
-                @Html.CheckBoxFor(model => model.Tecnico, new { htmlAttributes = new { @class = "form-control col-md-2" } })
-                Marque se for um Técnico
-            </label>
-            @Html.ValidationMessageFor(model => model.Tecnico, "", new { @class = "text-danger" })
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-offset-2">
-                @Html.CheckBoxFor(model => model.Dirige, new { htmlAttributes = new { @class = "form-control col-md-2" } })
-                Marque se tiver carteira de motorista
-            </label>
-            @Html.ValidationMessageFor(model => model.Dirige, "", new { @class = "text-danger" })
+            <div class="form-group col-md-4">
+                <label class="control-label col-md-12">
+                    @Html.CheckBoxFor(model => model.Dirige, new { htmlAttributes = new { @class = "form-control col-md-2" } })
+                    Marque se tiver carteira de motorista
+                </label>
+                @Html.ValidationMessageFor(model => model.Dirige, "", new { @class = "text-danger" })
+            </div>
         </div>
         <div class="panel panel-default">
             <table class="table table-hover">

@@ -251,6 +251,7 @@ namespace Regule.Models
 				}
 			}
 		}
+
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Principal", DbType="Bit NOT NULL")]
 		public bool Principal
 		{
@@ -270,8 +271,9 @@ namespace Regule.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tel", DbType="VarChar(50)")]
+
+        [Required(ErrorMessage = "Campo obrigatório")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tel", DbType="VarChar(50)")]
 		public string Tel
 		{
 			get
@@ -491,8 +493,9 @@ namespace Regule.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantidade", DbType="Int")]
+
+        [Required(ErrorMessage = "Campo obrigatório")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantidade", DbType="Int")]
 		public System.Nullable<int> Quantidade
 		{
 			get
@@ -511,8 +514,9 @@ namespace Regule.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Preco", DbType="Money")]
+
+        [Required(ErrorMessage = "Campo obrigatório")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Preco", DbType="Money")]
 		public System.Nullable<decimal> Preco
 		{
 			get
@@ -654,68 +658,71 @@ namespace Regule.Models
 			}
 		}
 	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Compra")]
-	public partial class Compra : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private System.Nullable<System.DateTime> _Data;
-		
-		private int _IdPessoa;
-		
-		private System.Nullable<decimal> _Desconto;
-		
-		private EntitySet<CompraProduto> _CompraProdutos;
-		
-		private EntityRef<Pessoa> _Pessoa;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnDataChanging(System.Nullable<System.DateTime> value);
-    partial void OnDataChanged();
-    partial void OnIdPessoaChanging(int value);
-    partial void OnIdPessoaChanged();
-    partial void OnDescontoChanging(System.Nullable<decimal> value);
-    partial void OnDescontoChanged();
-    #endregion
-		
-		public Compra()
-		{
-			this._CompraProdutos = new EntitySet<CompraProduto>(new Action<CompraProduto>(this.attach_CompraProdutos), new Action<CompraProduto>(this.detach_CompraProdutos));
-			this._Pessoa = default(EntityRef<Pessoa>);
-			OnCreated();
-		}
+
+    [global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.Compra")]
+    public partial class Compra : INotifyPropertyChanging, INotifyPropertyChanged
+    {
+
+        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+
+        private int _Id;
+
+        private System.Nullable<System.DateTime> _Data;
+
+        private int _IdPessoa;
+
+        private System.Nullable<decimal> _Desconto;
+
+        private EntitySet<CompraProduto> _CompraProdutos;
+
+        private EntityRef<Pessoa> _Pessoa;
+
+        #region Extensibility Method Definitions
+        partial void OnLoaded();
+        partial void OnValidate(System.Data.Linq.ChangeAction action);
+        partial void OnCreated();
+        partial void OnIdChanging(int value);
+        partial void OnIdChanged();
+        partial void OnDataChanging(System.Nullable<System.DateTime> value);
+        partial void OnDataChanged();
+        partial void OnIdPessoaChanging(int value);
+        partial void OnIdPessoaChanged();
+        partial void OnDescontoChanging(System.Nullable<decimal> value);
+        partial void OnDescontoChanged();
+        #endregion
+
+        public Compra()
+        {
+            this._CompraProdutos = new EntitySet<CompraProduto>(new Action<CompraProduto>(this.attach_CompraProdutos), new Action<CompraProduto>(this.detach_CompraProdutos));
+            this._Pessoa = default(EntityRef<Pessoa>);
+            OnCreated();
+        }
 
         [Required(ErrorMessage = "Campo obrigatório")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data", DbType="Date")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Id", AutoSync = AutoSync.OnInsert, DbType = "Int NOT NULL IDENTITY", IsPrimaryKey = true, IsDbGenerated = true)]
+        public int Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                if ((this._Id != value))
+                {
+                    this.OnIdChanging(value);
+                    this.SendPropertyChanging();
+                    this._Id = value;
+                    this.SendPropertyChanged("Id");
+                    this.OnIdChanged();
+                }
+            }
+        }
+
+        [Required(ErrorMessage = "Campo obrigatório")]
+        [DataType(DataType.Date, ErrorMessage = "{0} deve ser uma data")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data", DbType="Date")]
 		public System.Nullable<System.DateTime> Data
 		{
 			get
@@ -759,8 +766,9 @@ namespace Regule.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Desconto", DbType="Money")]
+
+        [Required(ErrorMessage = "Campo obrigatório")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Desconto", DbType="Money")]
 		public System.Nullable<decimal> Desconto
 		{
 			get
@@ -980,8 +988,9 @@ namespace Regule.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantidade", DbType="Int")]
+
+        [Required(ErrorMessage = "Campo obrigatório")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantidade", DbType="Int")]
 		public System.Nullable<int> Quantidade
 		{
 			get
@@ -1000,8 +1009,9 @@ namespace Regule.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Preco", DbType="Money")]
+
+        [Required(ErrorMessage = "Campo obrigatório")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Preco", DbType="Money")]
 		public System.Nullable<decimal> Preco
 		{
 			get
@@ -1199,8 +1209,8 @@ namespace Regule.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CPF", DbType="Char(11)")]
+        [StringLength(11,MinimumLength = 11,ErrorMessage = "{0} deve ter 11 numeros")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CPF", DbType="Char(11)")]
 		public string CPF
 		{
 			get
@@ -1379,8 +1389,10 @@ namespace Regule.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RG", DbType="Char(9)")]
+
+        [Required(ErrorMessage = "Campo obrigatório")]
+        [StringLength(9,MinimumLength = 9,ErrorMessage ="{0} deve ter 9 números")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RG", DbType="Char(9)")]
 		public string RG
 		{
 			get
@@ -1399,7 +1411,8 @@ namespace Regule.Models
 				}
 			}
 		}
-		
+        [DisplayName("Salário")]
+		[DataType(DataType.Currency,ErrorMessage ="{0} deve ser em número")]
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Salario", DbType="Money")]
 		public System.Nullable<decimal> Salario
 		{
@@ -1419,7 +1432,9 @@ namespace Regule.Models
 				}
 			}
 		}
-		
+
+        [Required(ErrorMessage = "Campo obrigatório")]
+        [DisplayName("Carteira de Trabalho")]
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CarteiraTrb", DbType="NVarChar(50)")]
 		public string CarteiraTrb
 		{
@@ -1479,7 +1494,8 @@ namespace Regule.Models
 				}
 			}
 		}
-		
+
+		[DisplayName("Observação")]
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Observacao", DbType="VarChar(1000)")]
 		public string Observacao
 		{
@@ -1636,8 +1652,10 @@ namespace Regule.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CNPJ", DbType="Char(14)")]
+
+        [Required(ErrorMessage = "Campo obrigatório")]
+        [StringLength(14,MinimumLength =14,ErrorMessage ="{0} deve ter {1} números")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CNPJ", DbType="Char(14)")]
 		public string CNPJ
 		{
 			get
@@ -1656,8 +1674,9 @@ namespace Regule.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RazaoSocial", DbType="VarChar(250)")]
+
+        [Required(ErrorMessage = "Campo obrigatório")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RazaoSocial", DbType="VarChar(250)")]
 		public string RazaoSocial
 		{
 			get
@@ -1796,8 +1815,10 @@ namespace Regule.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data", DbType="Date")]
+        [Required(ErrorMessage ="Campo obrigatório")]
+		[DataType(DataType.Date,ErrorMessage ="{0} deve ser uma data")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data", DbType="Date")]
 		public System.Nullable<System.DateTime> Data
 		{
 			get
@@ -1816,8 +1837,11 @@ namespace Regule.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Referencia", DbType="Date")]
+
+        [Required(ErrorMessage = "Campo obrigatório")]
+        [DataType(DataType.Date, ErrorMessage = "{0} deve ser uma data")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Referencia", DbType="Date")]
 		public System.Nullable<System.DateTime> Referencia
 		{
 			get
@@ -1836,8 +1860,9 @@ namespace Regule.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Valor", DbType="Money")]
+
+        [Required(ErrorMessage = "Campo obrigatório")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Valor", DbType="Money")]
 		public System.Nullable<decimal> Valor
 		{
 			get
@@ -1931,7 +1956,12 @@ namespace Regule.Models
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-	}
+
+        public static implicit operator EntitySet<object>(Pagamento v)
+        {
+            throw new NotImplementedException();
+        }
+    }
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Produto")]
 	public partial class Produto : INotifyPropertyChanging, INotifyPropertyChanged
@@ -1984,8 +2014,9 @@ namespace Regule.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nome", DbType="VarChar(150)")]
+
+        [Required(ErrorMessage = "Campo obrigatório")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nome", DbType="VarChar(150)")]
 		public string Nome
 		{
 			get
@@ -2131,8 +2162,9 @@ namespace Regule.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sigla", DbType="VarChar(4)")]
+
+        [Required(ErrorMessage = "Campo obrigatório")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sigla", DbType="VarChar(4)")]
 		public string Sigla
 		{
 			get
@@ -2327,8 +2359,11 @@ namespace Regule.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data", DbType="Date")]
+
+        [Required(ErrorMessage = "Campo obrigatório")]
+        [DataType(DataType.Date, ErrorMessage = "{0} deve ser uma data")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data", DbType="Date")]
 		public System.Nullable<System.DateTime> Data
 		{
 			get
@@ -2347,8 +2382,9 @@ namespace Regule.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Desconto", DbType="Money")]
+
+        [Required(ErrorMessage = "Campo obrigatório")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Desconto", DbType="Money")]
 		public System.Nullable<decimal> Desconto
 		{
 			get
@@ -2524,8 +2560,9 @@ namespace Regule.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nome", DbType="VarChar(250)")]
+
+        [Required(ErrorMessage = "Campo obrigatório")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nome", DbType="VarChar(250)")]
 		public string Nome
 		{
 			get
@@ -2544,8 +2581,9 @@ namespace Regule.Models
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fornecedor", DbType="Bit NOT NULL")]
+
+        [Required(ErrorMessage = "Campo obrigatório")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fornecedor", DbType="Bit NOT NULL")]
 		public bool Fornecedor
 		{
 			get
@@ -2566,6 +2604,7 @@ namespace Regule.Models
 		}
 
         [Required(ErrorMessage = "Campo obrigatório")]
+        [DisplayName("Endereço")]
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Endereco", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
 		public string Endereco
 		{
@@ -2608,6 +2647,7 @@ namespace Regule.Models
 		}
 
         [Required(ErrorMessage = "Campo obrigatório")]
+        [StringLength(2, MinimumLength = 2,ErrorMessage ="O {0} deve ter {1} letras" )]
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="Char(2) NOT NULL", CanBeNull=false)]
 		public string Estado
 		{

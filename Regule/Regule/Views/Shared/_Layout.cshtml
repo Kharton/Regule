@@ -22,11 +22,10 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
-                        @Html.ActionLink("Pessoas","Index","Pessoas",new { area = ""}, new {@class = "dropdown-toggle"})
+                        <a href="#" class="dropdown-toggle">Entidades</a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Fisicas","Index","PFisicas")</li>
-                            <li>@Html.ActionLink("Juridicas","Index","PJuridicas")</li>
-                            <li>@Html.ActionLink("Funcionários","Index","Funcionarios")</li>
+                            <li>@Html.ActionLink("Clientes","Index","Clientes")</li>
+                            <li>@Html.ActionLink("Fornecedores","Index","Fornecedores")</li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -36,10 +35,18 @@
                             <li>@Html.ActionLink("Vendas","Index","Vendas")</li>
                         </ul>
                     </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Funcionários</a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Funcionários","Index","Funcionarios")</li>
+                            <li>@Html.ActionLink("Pagamentos","Index","Pagamentos")</li>
+                        </ul>
+                        
+                    </li>
                     <li>@Html.ActionLink("Unidades", "Index", "Unidades")</li>
                     <li>@Html.ActionLink("Produtos", "Index", "Produtos")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <!--<li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>-->
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

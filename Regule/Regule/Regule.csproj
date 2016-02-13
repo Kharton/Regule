@@ -174,6 +174,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\PagamentosController.cs" />
     <Compile Include="Controllers\ComprasControllers.cs" />
     <Compile Include="Controllers\FuncionariosController.cs" />
     <Compile Include="Controllers\PessoasController.cs" />
@@ -306,10 +307,15 @@
     <Content Include="Views\Funcionarios\Delete.cshtml" />
     <Content Include="Views\Funcionarios\Details.cshtml" />
     <Content Include="Views\Funcionarios\Edit.cshtml" />
-    <Content Include="Views\Funcionarios\DisplayTemplates\Pagamento.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Pagamento.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\CliComunicar.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CliComunicar.cshtml" />
     <Content Include="Views\Clientes\Create.cshtml" />
+    <Content Include="Views\Pagamentos\Index.cshtml" />
+    <Content Include="Views\Pagamentos\Delete.cshtml" />
+    <Content Include="Views\Pagamentos\Details.cshtml" />
+    <Content Include="Views\Pagamentos\Edit.cshtml" />
+    <Content Include="Views\Pagamentos\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

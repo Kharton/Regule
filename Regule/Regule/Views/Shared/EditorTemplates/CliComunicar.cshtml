@@ -2,6 +2,7 @@
                 <tr class="re-item">
                     <td>
                         @Html.EditorFor(m => Model.Tel,new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => Model.Tel, "", new { @class = "text-danger" })
                     </td>
                 
 
@@ -13,6 +14,7 @@
                     </td>
                     
                     <td>
+                        @Html.HiddenFor(m => Model.Id)
                         <div class="btn btn-default remover" >
                             <i class="glyphicon glyphicon-trash">
                             </i>
