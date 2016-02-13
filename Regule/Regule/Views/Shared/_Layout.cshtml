@@ -62,8 +62,10 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
     @Scripts.Render("~/Scripts/Main.js")
+    @Scripts.Render("~/Scripts/jquery.validate.js")
+    @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.js")
+    @RenderSection("scripts", required: false)
     <script>
     $('.dropdown').hover(
         function() {
