@@ -316,6 +316,7 @@
     <Content Include="Views\Pagamentos\Edit.cshtml" />
     <Content Include="Views\Pagamentos\Create.cshtml" />
     <Content Include="Views\Clientes\Create.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

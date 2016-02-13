@@ -1,0 +1,8 @@
+﻿@model DateTime?
+@{
+    DateTime datinha = new DateTime();
+    if (Model.HasValue)
+    {    
+         datinha = (DateTime)Model;
+    }
+}        @datinha.ToString("dd/MM/yyyy")

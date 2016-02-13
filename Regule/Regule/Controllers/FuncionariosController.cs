@@ -84,7 +84,7 @@ namespace Regule.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Fisica,Id,Dirige,CarteiraTrb,Observacao,RG,Salario,Tecnico")] Funcionario Func)
-        {            
+        {
             if (ModelState.IsValid)
             {
                 Funcionario tp = db.Funcionarios.FirstOrDefault(x => x.Id == Func.Id);
