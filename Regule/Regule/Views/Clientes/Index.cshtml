@@ -4,7 +4,7 @@
     ViewBag.Title = "Clientes";
 }
    
-<h2>Pessoas Fisicas</h2>
+<h2>Clientes</h2>
 <p>
     @Html.ActionLink("Novo", "Create", null, new { @class = "btn btn-default" })
 </p>
@@ -46,7 +46,9 @@
                 @Html.DisplayFor(modelItem => item.Estado)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CliComunicars)
+                @if(item.CliComunicars[0] != null){
+                    @Html.DisplayFor(modelItem=> item.CliComunicars[0].Tel)
+                }
             </td>
             <td>
                 <span class="btn-group">

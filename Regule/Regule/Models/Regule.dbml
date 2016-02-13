@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Loja" Class="ReguleDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=Loja;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="LojaConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=Loja;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="LojaConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.CliComunicar" Member="CliComunicars">
     <Type Name="CliComunicar">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -117,6 +117,7 @@
       <Column Name="Endereco" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
       <Column Name="Cidade" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
       <Column Name="Estado" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(250)" CanBeNull="false" />
       <Association Name="Pessoa_CliComunicar" Member="CliComunicars" ThisKey="Id" OtherKey="IdPessoa" Type="CliComunicar" />
       <Association Name="Pessoa_Compra" Member="Compras" ThisKey="Id" OtherKey="IdPessoa" Type="Compra" />
       <Association Name="Pessoa_Fisica" Member="Fisica" ThisKey="Id" OtherKey="Id" Type="Fisica" Cardinality="One" />

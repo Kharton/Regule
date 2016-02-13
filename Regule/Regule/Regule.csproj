@@ -310,12 +310,12 @@
     <Content Include="Views\Shared\DisplayTemplates\Pagamento.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\CliComunicar.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CliComunicar.cshtml" />
-    <Content Include="Views\Clientes\Create.cshtml" />
     <Content Include="Views\Pagamentos\Index.cshtml" />
     <Content Include="Views\Pagamentos\Delete.cshtml" />
     <Content Include="Views\Pagamentos\Details.cshtml" />
     <Content Include="Views\Pagamentos\Edit.cshtml" />
     <Content Include="Views\Pagamentos\Create.cshtml" />
+    <Content Include="Views\Clientes\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

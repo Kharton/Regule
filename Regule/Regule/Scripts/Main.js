@@ -9,6 +9,22 @@
         botoes[i].addEventListener('click', function () { action(this, 2) });
     }
     indice = document.querySelectorAll('table:not(.hidden) .re-item').length;
+    
+    var x = document.getElementsByName("cpf");
+    for (var i = 0; i < x.length; i++) {
+        x[i].addEventListener("click", function () {
+            var quadro = document.querySelector('input[name$=' + this.value.toUpperCase() + ']').parentElement.parentElement;
+            quadro.querySelector('input[name$='+this.value.toUpperCase()+']').value = '';
+            quadro.classList.remove("hidden");
+            if (quadro.nextElementSibling.querySelector('[name$=CNPJ]')) {
+                quadro.nextElementSibling.classList.add("hidden");
+                quadro.nextElementSibling.querySelector('input[name$=CNPJ]').value = '00000000000000';
+            } else {
+                quadro.previousElementSibling.classList.add("hidden");
+                quadro.previousElementSibling.querySelector('input[name$=CPF]').value = '00000000000';
+            }
+        })
+    }
 })();
 
 function action(el, tipo) {

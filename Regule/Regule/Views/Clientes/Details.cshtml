@@ -1,4 +1,4 @@
-﻿@model Regule.Models.Fisica
+﻿@model Regule.Models.Pessoa
 
 @{
     ViewBag.Title = "Detalhes";
@@ -19,32 +19,74 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Pessoa.Nome)
+            @Html.DisplayNameFor(model => model.Nome)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Pessoa.Nome)
-        </dd>  
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CPF)
+            CPF/CNPJ
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CPF)
-        </dd>       
+            @if(Model.Fisica!=null){
+            @Html.DisplayFor(model => model.Fisica.CPF)
+            }else{
+            @Html.DisplayFor(model => model.Juridica.CNPJ)
+            }
+        </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Pessoa.Fornecedor)
+            @Html.DisplayNameFor(model => model.Estado)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Pessoa.Fornecedor)
-        </dd>        
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
     </dl>
+
+    <div class="panel panel-default">
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    Número
+                </th>
+                <th>
+                    Principal
+                </th>
+            </tr>
+            @Html.DisplayFor(model=>model.CliComunicars, new { htmlAttributes = new { @class = "form-control" } })
+        </table>
+    </div>
 </div>
 <p>
+    @Html.ActionLink("Deletar", "Delete", new { id = Model.Id}) |
     @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Voltar a listagem", "Index")
 </p>

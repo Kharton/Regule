@@ -24,7 +24,7 @@
             Referência
         </label>
         
-        @Html.EditorFor(model => model.Pagamentos[0].Referencia,new { htmlAttributes = new { @class = "form-control", @type="date"} })
+        @Html.EditorFor(model => model.Pagamentos[0].Referencia,new { htmlAttributes = new { @class = "form-control", @type="date", @data_val="false"} })
     </div>
     <input type="submit" value="Pesquisar" class="btn btn-default"/>
 }

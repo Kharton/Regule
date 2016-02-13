@@ -15,7 +15,7 @@ namespace Regule.Controllers
         // GET: Pessoas
         public ActionResult Index()
         {
-            return View(db.Pessoas.Where(x=>x.Fornecedor==false).ToList());
+            return View(db.Pessoas.Where(x=>x.Fornecedor==false && x.Fisica.Funcionario == null).ToList());
         }
 
         // GET: Pessoas/Details/5
@@ -25,7 +25,7 @@ namespace Regule.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pessoa Fisi = db.Pessoas.FirstOrDefault(x => x.Id == id);
+            Pessoa Fisi = db.Pessoas.FirstOrDefault(x => x.Id == id && x.Fornecedor ==false);
             if (Fisi == null)
             {
                 return HttpNotFound();
@@ -36,17 +36,27 @@ namespace Regule.Controllers
         // GET: Pessoas/Create
         public ActionResult Create()
         {
-            return View();
+            Pessoa fisi = new Pessoa();
+            fisi.CliComunicars.Add(new CliComunicar());
+            return View(fisi);
         }
 
         // POST: Pessoas/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Fisica,Juridica")] Pessoa Fisi)
+        public ActionResult Create([Bind(Include = "Fisica,Juridica,Nome,Estado,Cidade,Endereco,Email,CliComunicars")] Pessoa Fisi)
         {
             if (ModelState.IsValid)
             {
                 Fisi.Fornecedor = false;
+                if(Fisi.Fisica.CPF == "00000000000" && Fisi.Juridica.CNPJ !="00000000000000")
+                {
+                    Fisi.Fisica = null;
+                }
+                else
+                {
+                    Fisi.Juridica = null;
+                }
                 db.Pessoas.InsertOnSubmit(Fisi);
                 db.SubmitChanges();
                 return RedirectToAction("Index");
@@ -62,7 +72,7 @@ namespace Regule.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pessoa Fisi = db.Pessoas.FirstOrDefault(x => x.Id == id);
+            Pessoa Fisi = db.Pessoas.FirstOrDefault(x => x.Id == id && x.Fornecedor == false);
             if (Fisi == null)
             {
                 return HttpNotFound();
@@ -73,14 +83,57 @@ namespace Regule.Controllers
         // POST: Pessoas/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Fisica,Juridica")] Pessoa Fisi)
+        public ActionResult Edit([Bind(Include = "Id,Fisica,Juridica,Nome,Estado,Cidade,Endereco,Email,CliComunicars")] Pessoa Fisi)
         {
             if (ModelState.IsValid)
             {
                 Pessoa tp = db.Pessoas.FirstOrDefault(x => x.Id == Fisi.Id);
-                //tp.CPF= Fisi.CPF;
-                //tp.Pessoa.Fornecedor = Fisi.Pessoa.Fornecedor;
-                //tp.Pessoa.Nome = Fisi.Pessoa.Nome;
+                tp.Nome = Fisi.Nome;
+                tp.Estado = Fisi.Estado;
+                tp.Cidade = Fisi.Cidade;
+                tp.Endereco = Fisi.Endereco;
+                tp.Email = Fisi.Email;
+
+                if (Fisi.Fisica.CPF == "00000000000" && Fisi.Juridica.CNPJ != "00000000000000")
+                {
+                    if(db.Fisicas.FirstOrDefault(x => x.Id == Fisi.Id) != null)
+                    {
+                        db.Fisicas.DeleteOnSubmit(db.Fisicas.FirstOrDefault(x => x.Id == Fisi.Id));
+
+                        db.Juridicas.InsertOnSubmit(new Juridica { Id = Fisi.Id, CNPJ = Fisi.Juridica.CNPJ });
+                    }
+                    else
+                    {
+                        tp.Juridica.CNPJ = Fisi.Juridica.CNPJ;
+                    }
+                }
+                else
+                {
+                    if(db.Juridicas.FirstOrDefault(x => x.Id == Fisi.Id) != null)
+                    {
+                        db.Juridicas.DeleteOnSubmit(db.Juridicas.FirstOrDefault(x => x.Id == Fisi.Id));
+                        db.Fisicas.InsertOnSubmit(new Fisica { Id = Fisi.Id, CPF = Fisi.Fisica.CPF });
+                    }
+                    else
+                    {
+                        tp.Fisica.CPF = Fisi.Fisica.CPF;
+                    }
+                }
+
+                foreach (CliComunicar tel in db.CliComunicars.Where(x => x.IdPessoa == Fisi.Id))
+                {
+                    CliComunicar tpc = Fisi.CliComunicars.Where(X => X.Id == tel.Id).FirstOrDefault();
+                    if (tpc == null)
+                    {
+                        CliComunicar t = db.CliComunicars.Where(x => x.Id == tel.Id).FirstOrDefault();
+                        db.CliComunicars.DeleteOnSubmit(t);
+                    }
+                    else
+                    {
+                        tel.Tel = tpc.Tel;
+                        tel.Principal = tpc.Principal;
+                    }
+                }
                 db.SubmitChanges();
                 return RedirectToAction("Index");
             }
@@ -94,7 +147,7 @@ namespace Regule.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pessoa Fisi = db.Pessoas.FirstOrDefault(x => x.Id == id);
+            Pessoa Fisi = db.Pessoas.FirstOrDefault(x => x.Id == id&& x.Fornecedor == false);
             if (Fisi == null)
             {
                 return HttpNotFound();
