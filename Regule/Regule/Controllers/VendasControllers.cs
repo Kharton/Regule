@@ -15,7 +15,7 @@ namespace Regule.Controllers
         // GET: Vendas
         public ActionResult Index()
         {
-            ViewBag.Fornecedores = db.Pessoas.Where(x => x.Fornecedor == true).Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
+            ViewBag.Clientes = db.Pessoas.Where(x => x.Fornecedor == false && x.Fisica.Funcionario == null).Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
             ViewBag.Produtos = db.Produtos.Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
             List<Venda> ret = db.Vendas.ToList();
             if (ret == null)
@@ -28,7 +28,7 @@ namespace Regule.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index([Bind(Include = "Data,IdPessoa,VendaProdutos")] Venda Fisi)
         {
-            ViewBag.Fornecedores = db.Pessoas.Where(x => x.Fornecedor == true).Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
+            ViewBag.Clientes = db.Pessoas.Where(x => x.Fornecedor == false && x.Fisica.Funcionario == null).Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
             ViewBag.Produtos = db.Produtos.Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
             IEnumerable<Venda> fun = db.Vendas.Where(x => x.IdPessoa == Fisi.IdPessoa);
             if (Fisi.Data != null)
@@ -57,8 +57,7 @@ namespace Regule.Controllers
         // GET: Vendas/Create
         public ActionResult Create()
         {
-            IEnumerable<Pessoa> pessoas = db.Pessoas.Where(x => x.Fisica != null && x.Fisica.Funcionario != null).ToList();
-            ViewBag.Pessoas = pessoas.Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
+            IEnumerable<Pessoa> pessoas = db.Pessoas.Where(x => x.Fornecedor == false && x.Fisica.Funcionario == null).ToList();
             Venda Vend = new Venda();
             if (Vend.VendaProdutos.Count < 1)
             {
@@ -103,7 +102,7 @@ namespace Regule.Controllers
             {
                 Vend.VendaProdutos.Add(new VendaProduto());
             }
-            IEnumerable<Pessoa> pessoas = db.Pessoas.Where(x=>x.Fisica != null && x.Fisica.Funcionario != null).ToList();
+            IEnumerable<Pessoa> pessoas = db.Pessoas.Where(x => x.Fornecedor == false && x.Fisica.Funcionario == null).ToList();
             ViewBag.Pessoas = pessoas.Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
             IEnumerable<Unidade> unidades = db.Unidades.ToList();
             ViewBag.Unidades = unidades.Select(h => new SelectListItem { Text = h.Sigla + " - " + h.Descricao, Value = h.Id.ToString() });

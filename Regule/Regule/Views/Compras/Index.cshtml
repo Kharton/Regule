@@ -13,7 +13,7 @@
 
     <div class="form-group">
         <label class="control-label">
-            Funcionário
+            Fornecedor
         </label>
         @Html.DropDownListFor(model => model.First().IdPessoa, ViewBag.Fornecedores as IEnumerable<SelectListItem>
             ,"Selecione...",new { @class = "form-control",@data_val="false" })
