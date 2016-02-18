@@ -7,7 +7,8 @@
 
 
     <td>
-        @Html.EditorFor(m => Model.Quantidade , new { @class = "form-control", @data_val_date="O campo deve ser um número" })
+        @Html.EditorFor(m => Model.Quantidade , new { @class = "form-control", @data_val_number="O campo deve ser um número" })
+        @Html.ValidationMessageFor(m => Model.Quantidade, "", new { @class = "text-danger" })
     </td>
 
 
@@ -18,7 +19,8 @@
 
 
     <td>
-        @Html.EditorFor(m => Model.Preco , new { @class = "form-control", @data_val_date="O campo deve ser um número" })
+        @Html.EditorFor(m => Model.Preco , new { @class = "form-control", @data_val_number="O campo deve ser um número" })
+        @Html.ValidationMessageFor(m => Model.Preco, "", new { @class = "text-danger" })
     </td>
 
     <td>
