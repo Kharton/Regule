@@ -13,7 +13,7 @@
         <p>
             O sistema suporta o cadastro de pessoas, tanto funcionários quanto os clientes, assim ele transforma toda a papelada em uma tela organizada e bonita onde é possivel encontrar os registros rapidamente.
         </p>
-        <p>@Html.ActionLink("Visualizar →","Index","Pessoas", new{area = ""}, new{@class="btn btn-primary"})</p>
+        <p>@Html.ActionLink("Visualizar →","Index","Clientes", new{area = ""}, new{@class="btn btn-primary"})</p>
     </div>
     <div class="col-md-4">
         <h2>Fluxo de produtos</h2>
@@ -21,8 +21,8 @@
         <p>@Html.ActionLink("Visualizar →","Index","Compras", new{area = ""}, new{@class= "btn btn-primary" })</p>
     </div>
     <div class="col-md-4">
-        <h2>Alguma outra coisa</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-primary" href="#">Visualizar →</a></p>
+        <h2>Relatórios</h2>
+        <p>Resumos e relatórios de vendas em algum período tambem estão presentes, não precisa mais esperar para saber sobre seus relatórios, assim as medidas podem ser tomadas rapidamente.</p>
+        <p>@Html.ActionLink("Visualizar →", "Index", "Relatorios", new { area = "" }, new { @class = "btn btn-primary" })</p>
     </div>
 </div>

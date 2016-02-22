@@ -83,7 +83,7 @@ namespace Regule.Controllers
         // POST: Funcionarios/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Fisica,Id,Dirige,CarteiraTrb,Observacao,RG,Salario,Tecnico")] Funcionario Func)
+        public ActionResult Edit([Bind(Include = "Id,Fisica,Dirige,CarteiraTrb,Observacao,RG,Salario,Tecnico")] Funcionario Func)
         {
             if (ModelState.IsValid)
             {
