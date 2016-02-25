@@ -252,7 +252,7 @@ namespace Regule.Models
             }
         }
 
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Principal", DbType = "Bit NOT NULL")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Principal", DbType = "Bit NOT NULL",UpdateCheck = UpdateCheck.Never)]
         public bool Principal
         {
             get
@@ -273,7 +273,7 @@ namespace Regule.Models
         }
 
         [Required(ErrorMessage = "Campo obrigatório")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Tel", DbType = "VarChar(50)")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Tel", DbType = "VarChar(50)", UpdateCheck = UpdateCheck.Never)]
         public string Tel
         {
             get
@@ -495,7 +495,7 @@ namespace Regule.Models
         }
 
         [Required(ErrorMessage = "Campo obrigatório")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Quantidade", DbType = "Int")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Quantidade", DbType = "Int", UpdateCheck = UpdateCheck.Never)]
         public System.Nullable<int> Quantidade
         {
             get
@@ -516,7 +516,7 @@ namespace Regule.Models
         }
 
         [Required(ErrorMessage = "Campo obrigatório")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Preco", DbType = "Money")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Preco", DbType = "Money", UpdateCheck = UpdateCheck.Never)]
         public System.Nullable<decimal> Preco
         {
             get
@@ -722,7 +722,7 @@ namespace Regule.Models
         [Required(ErrorMessage = "Campo obrigatório")]
         [DataType(DataType.Date, ErrorMessage = "{0} deve ser uma data")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Data", DbType = "Date")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Data", DbType = "Date", UpdateCheck = UpdateCheck.Never)]
         public System.Nullable<System.DateTime> Data
         {
             get
@@ -768,7 +768,7 @@ namespace Regule.Models
         }
 
         [Required(ErrorMessage = "Campo obrigatório")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Desconto", DbType = "Money")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Desconto", DbType = "Money", UpdateCheck = UpdateCheck.Never)]
         public System.Nullable<decimal> Desconto
         {
             get
@@ -990,7 +990,7 @@ namespace Regule.Models
         }
 
         [Required(ErrorMessage = "Campo obrigatório")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Quantidade", DbType = "Int")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Quantidade", DbType = "Int", UpdateCheck = UpdateCheck.Never)]
         public System.Nullable<int> Quantidade
         {
             get
@@ -1011,7 +1011,7 @@ namespace Regule.Models
         }
 
         [Required(ErrorMessage = "Campo obrigatório")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Preco", DbType = "Money")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Preco", DbType = "Money", UpdateCheck = UpdateCheck.Never)]
         public System.Nullable<decimal> Preco
         {
             get
@@ -1210,7 +1210,7 @@ namespace Regule.Models
             }
         }
         [StringLength(11, MinimumLength = 11, ErrorMessage = "{0} deve ter 11 numeros")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_CPF", DbType = "Char(11)")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_CPF", DbType = "Char(11)", UpdateCheck = UpdateCheck.Never)]
         public string CPF
         {
             get
@@ -1392,7 +1392,7 @@ namespace Regule.Models
 
         [Required(ErrorMessage = "Campo obrigatório")]
         [StringLength(9, MinimumLength = 9, ErrorMessage = "{0} deve ter 9 números")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_RG", DbType = "Char(9)")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_RG", DbType = "Char(9)", UpdateCheck = UpdateCheck.Never)]
         public string RG
         {
             get
@@ -1413,7 +1413,7 @@ namespace Regule.Models
         }
         [DisplayName("Salário")]
         [DataType(DataType.Currency, ErrorMessage = "{0} deve ser em número")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Salario", DbType = "Money")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Salario", DbType = "Money", UpdateCheck = UpdateCheck.Never)]
         public System.Nullable<decimal> Salario
         {
             get
@@ -1435,7 +1435,7 @@ namespace Regule.Models
 
         [Required(ErrorMessage = "Campo obrigatório")]
         [DisplayName("Carteira de Trabalho")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_CarteiraTrb", DbType = "NVarChar(50)")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_CarteiraTrb", DbType = "NVarChar(50)", UpdateCheck = UpdateCheck.Never)]
         public string CarteiraTrb
         {
             get
@@ -1455,7 +1455,7 @@ namespace Regule.Models
             }
         }
 
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Dirige", DbType = "Bit NOT NULL")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Dirige", DbType = "Bit NOT NULL", UpdateCheck = UpdateCheck.Never)]
         public bool Dirige
         {
             get
@@ -1475,7 +1475,7 @@ namespace Regule.Models
             }
         }
 
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Tecnico", DbType = "Bit NOT NULL")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Tecnico", DbType = "Bit NOT NULL", UpdateCheck = UpdateCheck.Never)]
         public bool Tecnico
         {
             get
@@ -1496,7 +1496,7 @@ namespace Regule.Models
         }
 
         [DisplayName("Observação")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Observacao", DbType = "VarChar(1000)")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Observacao", DbType = "VarChar(1000)", UpdateCheck = UpdateCheck.Never)]
         public string Observacao
         {
             get
@@ -1655,7 +1655,7 @@ namespace Regule.Models
 
         [Required(ErrorMessage = "Campo obrigatório")]
         [StringLength(14, MinimumLength = 14, ErrorMessage = "{0} deve ter {1} números")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_CNPJ", DbType = "Char(14)")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_CNPJ", DbType = "Char(14)", UpdateCheck = UpdateCheck.Never)]
         public string CNPJ
         {
             get
@@ -1676,7 +1676,7 @@ namespace Regule.Models
         }
 
         //[Required(ErrorMessage = "Campo obrigatório")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_RazaoSocial", DbType = "VarChar(250)")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_RazaoSocial", DbType = "VarChar(250)", UpdateCheck = UpdateCheck.Never)]
         public string RazaoSocial
         {
             get
@@ -1818,7 +1818,7 @@ namespace Regule.Models
         [Required(ErrorMessage = "Campo obrigatório")]
         [DataType(DataType.Date, ErrorMessage = "{0} deve ser uma data")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Data", DbType = "Date")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Data", DbType = "Date", UpdateCheck = UpdateCheck.Never)]
         public System.Nullable<System.DateTime> Data
         {
             get
@@ -1841,7 +1841,7 @@ namespace Regule.Models
         [Required(ErrorMessage = "Campo obrigatório")]
         [DataType(DataType.Date, ErrorMessage = "{0} deve ser uma data")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Referencia", DbType = "Date")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Referencia", DbType = "Date", UpdateCheck = UpdateCheck.Never)]
         public System.Nullable<System.DateTime> Referencia
         {
             get
@@ -1862,7 +1862,7 @@ namespace Regule.Models
         }
 
         [Required(ErrorMessage = "Campo obrigatório")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Valor", DbType = "Money")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Valor", DbType = "Money", UpdateCheck = UpdateCheck.Never)]
         public System.Nullable<decimal> Valor
         {
             get
@@ -2016,7 +2016,7 @@ namespace Regule.Models
         }
 
         [Required(ErrorMessage = "Campo obrigatório")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Nome", DbType = "VarChar(150)")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Nome", DbType = "VarChar(150)", UpdateCheck = UpdateCheck.Never)]
         public string Nome
         {
             get
@@ -2164,7 +2164,7 @@ namespace Regule.Models
         }
 
         [Required(ErrorMessage = "Campo obrigatório")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Sigla", DbType = "VarChar(4)")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Sigla", DbType = "VarChar(4)", UpdateCheck = UpdateCheck.Never)]
         public string Sigla
         {
             get
@@ -2184,7 +2184,7 @@ namespace Regule.Models
             }
         }
 
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Descricao", DbType = "VarChar(450)")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Descricao", DbType = "VarChar(450)", UpdateCheck = UpdateCheck.Never)]
         public string Descricao
         {
             get
@@ -2363,7 +2363,7 @@ namespace Regule.Models
         [Required(ErrorMessage = "Campo obrigatório")]
         [DataType(DataType.Date, ErrorMessage = "{0} deve ser uma data")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Data", DbType = "Date")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Data", DbType = "Date", UpdateCheck = UpdateCheck.Never)]
         public System.Nullable<System.DateTime> Data
         {
             get
@@ -2384,7 +2384,7 @@ namespace Regule.Models
         }
 
         [Required(ErrorMessage = "Campo obrigatório")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Desconto", DbType = "Money")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Desconto", DbType = "Money", UpdateCheck = UpdateCheck.Never)]
         public System.Nullable<decimal> Desconto
         {
             get
@@ -2566,7 +2566,7 @@ namespace Regule.Models
         }
 
         [Required(ErrorMessage = "Campo obrigatório")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Nome", DbType = "VarChar(250)")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Nome", DbType = "VarChar(250)", UpdateCheck = UpdateCheck.Never)]
         public string Nome
         {
             get
@@ -2587,7 +2587,7 @@ namespace Regule.Models
         }
 
         [Required(ErrorMessage = "Campo obrigatório")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Fornecedor", DbType = "Bit NOT NULL")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Fornecedor", DbType = "Bit NOT NULL", UpdateCheck = UpdateCheck.Never)]
         public bool Fornecedor
         {
             get
@@ -2609,7 +2609,7 @@ namespace Regule.Models
 
         [Required(ErrorMessage = "Campo obrigatório")]
         [DisplayName("Endereço")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Endereco", DbType = "VarChar(250) NOT NULL", CanBeNull = false)]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Endereco", DbType = "VarChar(250) NOT NULL", CanBeNull = false, UpdateCheck = UpdateCheck.Never)]
         public string Endereco
         {
             get
@@ -2630,7 +2630,7 @@ namespace Regule.Models
         }
 
         [Required(ErrorMessage = "Campo obrigatório")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Cidade", DbType = "VarChar(250) NOT NULL", CanBeNull = false)]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Cidade", DbType = "VarChar(250) NOT NULL", CanBeNull = false, UpdateCheck = UpdateCheck.Never)]
         public string Cidade
         {
             get
@@ -2652,7 +2652,7 @@ namespace Regule.Models
 
         [Required(ErrorMessage = "Campo obrigatório")]
         [StringLength(2, MinimumLength = 2, ErrorMessage = "O {0} deve ter {1} letras")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Estado", DbType = "Char(2) NOT NULL", CanBeNull = false)]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Estado", DbType = "Char(2) NOT NULL", CanBeNull = false, UpdateCheck = UpdateCheck.Never)]
         public string Estado
         {
             get
@@ -2671,8 +2671,8 @@ namespace Regule.Models
                 }
             }
         }
-        
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Email", DbType = "VarChar(250)", CanBeNull = false)]
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Email", DbType = "VarChar(250)", CanBeNull = false, UpdateCheck = UpdateCheck.Never)]
         public string Email
         {
             get

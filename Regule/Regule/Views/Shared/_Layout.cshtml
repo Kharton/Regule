@@ -23,21 +23,21 @@
                 <ul class="nav navbar-nav">
                 
                     <li class="dropdown">
-                      <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Entidades <span class="caret"></span></a>
+                      <a href class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Entidades <span class="caret"></span></a>
                       <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Clientes","Index","Clientes")</li>
                             <li>@Html.ActionLink("Fornecedores","Index","Fornecedores")</li>
                       </ul>
                     </li>
                     <li class="dropdown">
-                        @Html.ActionLink("Negociações","","",new { area = ""}, new {@class = "dropdown-toggle"})
+                        <a href class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Negociações <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Compras","Index","Compras")</li>
                             <li>@Html.ActionLink("Vendas","Index","Vendas")</li>
                         </ul>
                     </li>
                     <li class="dropdown">
-                      <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Funcionários <span class="caret"></span></a>
+                      <a href class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Funcionários <span class="caret"></span></a>
                       <ul class="dropdown-menu">
                         <li>@Html.ActionLink("Funcionários","Index","Funcionarios")</li>
                         <li>@Html.ActionLink("Pagamentos","Index","Pagamentos")</li>
@@ -45,8 +45,6 @@
                     </li>
                     <li>@Html.ActionLink("Unidades", "Index", "Unidades")</li>
                     <li>@Html.ActionLink("Produtos", "Index", "Produtos")</li>
-                    <!--<li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>-->
                 </ul>
             </div>
         </div>
@@ -65,15 +63,5 @@
     @Scripts.Render("~/Scripts/jquery.validate.js")
     @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.js")
     @RenderSection("scripts", required: false)
-    <script>
-    $('.dropdown').hover(
-        function() {
-            $(this).find('.dropdown-menu').stop(true, true).fadeIn();
-        },
-        function() {
-            $(this).find('.dropdown-menu').stop(true, true).fadeOut();
-        }
-    );
-    </script>
 </body>
 </html>

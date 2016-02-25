@@ -64,7 +64,7 @@ namespace Regule.Controllers
                 table.AddCell(cell);
 
                 phrase = new Phrase();
-                phrase.Add(new Chunk("Página x de y\nimpresso em: "+hj.ToString("dd/MM/yyyy HH:mm"), FontTextoN));
+                phrase.Add(new Chunk("Página "+doc.PageNumber+" de x\nimpresso em: "+hj.ToString("dd/MM/yyyy HH:mm"), FontTextoN));
                 cell = PhraseCell(phrase, PdfPCell.ALIGN_RIGHT,PdfPCell.ALIGN_BOTTOM);
                 
                 cell.BorderColorBottom = BaseColor.GRAY;
