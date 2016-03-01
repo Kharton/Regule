@@ -7,6 +7,9 @@
 
 <h2>Editar</h2>
 
+<table class="hidden sample">
+    @Html.EditorFor(model => model.CliComunicars[0], new { htmlAttributes = new { @class = "form-control" } })
+</table>
 
 @using (Html.BeginForm())
 {
@@ -100,6 +103,7 @@
         </div>
         <div class="panel panel-default">
             <table class="table table-hover">
+                <caption class="panel-heading label-info h4">Telefones</caption>
                 <tr>
                     <th>
                         Número
