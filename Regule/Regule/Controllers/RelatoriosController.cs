@@ -152,17 +152,17 @@ namespace Regule.Controllers
                             //Quantidade
                             phrase = new Phrase();
                             phrase.Add(new Chunk(item.Quantidade.ToString() + " - " + item.Unidade.Sigla, FontTexto));
-                            cell = PhraseCell(phrase, PdfPCell.ALIGN_LEFT);
+                            cell = PhraseCell(phrase, PdfPCell.ALIGN_RIGHT);
                             table.AddCell(cell);
                             //Valor/Un
                             phrase = new Phrase();
                             phrase.Add(new Chunk(((decimal)item.Preco).ToString("N"), FontTexto));
-                            cell = PhraseCell(phrase, PdfPCell.ALIGN_LEFT);
+                            cell = PhraseCell(phrase, PdfPCell.ALIGN_RIGHT);
                             table.AddCell(cell);
                             //Valor Total
                             phrase = new Phrase();
                             phrase.Add(new Chunk(((decimal)(item.Preco * item.Quantidade)).ToString("N"), FontTexto));
-                            cell = PhraseCell(phrase, PdfPCell.ALIGN_LEFT);
+                            cell = PhraseCell(phrase, PdfPCell.ALIGN_RIGHT);
                             table.AddCell(cell);
                             total += item.Preco * item.Quantidade;
                             ind++;
@@ -190,17 +190,17 @@ namespace Regule.Controllers
                             //Quantidade
                             phrase = new Phrase();
                             phrase.Add(new Chunk(item.Quantidade.ToString() + " - " + item.Unidade.Sigla, FontTexto));
-                            cell = PhraseCell(phrase, PdfPCell.ALIGN_LEFT);
+                            cell = PhraseCell(phrase, PdfPCell.ALIGN_RIGHT);
                             table.AddCell(cell);
                             //Valor/Un
                             phrase = new Phrase();
                             phrase.Add(new Chunk(((decimal)item.Preco).ToString("N"), FontTexto));
-                            cell = PhraseCell(phrase, PdfPCell.ALIGN_LEFT);
+                            cell = PhraseCell(phrase, PdfPCell.ALIGN_RIGHT);
                             table.AddCell(cell);
                             //Valor Total
                             phrase = new Phrase();
                             phrase.Add(new Chunk(((decimal)(item.Preco * item.Quantidade)).ToString("N"), FontTexto));
-                            cell = PhraseCell(phrase, PdfPCell.ALIGN_LEFT);
+                            cell = PhraseCell(phrase, PdfPCell.ALIGN_RIGHT);
                             table.AddCell(cell);
                             total += item.Preco * item.Quantidade;
                             ind++;
@@ -215,10 +215,35 @@ namespace Regule.Controllers
                 #endregion
 
                 #region Rodape
+                
+                table = new PdfPTable(3);
+                table.TotalWidth = doc.PageSize.Width - doc.LeftMargin * 2;
+                table.LockedWidth = true;
+                table.SetWidths(new float[] { 0.5f, 0.2f,0.3f});
 
+                phrase.Add(new Chunk("Vlr Total: ", FontTextoN));
+                cell = PhraseCell(phrase, Element.ALIGN_RIGHT);
+                cell.Border = PdfPCell.NO_BORDER;
+                table.AddCell(cell);
+
+                phrase = new Phrase();
+                phrase.Add(new Chunk(((decimal)total).ToString("N"), FontTextoN));
+                cell = PhraseCell(phrase, PdfPCell.ALIGN_RIGHT);
+
+                cell.BorderColorBottom = BaseColor.BLACK;
+                cell.BorderWidthBottom = 1;
+                cell.Border = Rectangle.BOTTOM_BORDER;
+                table.AddCell(cell);
+                
+                table.AddCell(new PdfPCell() { Border = PdfPCell.NO_BORDER});
+
+                doc.Add(table);
+                
                 #endregion
                 for (int i = 0; i <= ind / 22; i++)
                     doc.NewPage();
+
+
             doc.Close();
             return dados.ToArray();
         }
@@ -232,62 +257,6 @@ namespace Regule.Controllers
             cell.PaddingBottom = 5f;
             cell.PaddingTop = 0f;
             return cell;
-        }
-
-        public class HeaderTable : PdfPageEventHelper
-        {
-            protected PdfTemplate headerTemplate;
-            protected PdfPTable table;
-            protected float tableHeight;
-            protected int pagina;
-            public HeaderTable(Font FontTexto,float Width, string rel,Phrase p)
-            {
-                table = new PdfPTable(2);
-                table.TotalWidth = Width;
-                table.LockedWidth = true;
-                table.SetWidths(new float[] { 0.5f, 0.5f });
-
-                Phrase phrase = new Phrase();
-                phrase.Add(new Chunk("Relatório de " + rel, FontFactory.GetFont("Arial", 16, Font.BOLD, BaseColor.BLACK)));
-                PdfPCell cell = PhraseCell(phrase, PdfPCell.ALIGN_LEFT, PdfPCell.ALIGN_BOTTOM);
-
-                cell.BorderColorBottom = BaseColor.GRAY;
-                cell.BorderWidthBottom = 3;
-                cell.Border = Rectangle.BOTTOM_BORDER;
-                table.AddCell(cell);
-
-                phrase = new Phrase();
-                phrase.Add(new Chunk("impresso em: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm"), FontTexto));
-                cell = PhraseCell(phrase, PdfPCell.ALIGN_RIGHT, PdfPCell.ALIGN_BOTTOM);
-
-                cell.BorderColorBottom = BaseColor.GRAY;
-                cell.Border = Rectangle.BOTTOM_BORDER;
-                cell.BorderWidthBottom = 3;
-                table.AddCell(cell);
-
-                //Frase das pesquisas
-
-                cell = PhraseCell(p, PdfPCell.ALIGN_LEFT, PdfPCell.ALIGN_BOTTOM);
-                cell.BorderColorBottom = BaseColor.BLACK;
-                cell.BorderWidthBottom = 2;
-                cell.Border = Rectangle.BOTTOM_BORDER;
-                table.AddCell(cell);
-                table.AddCell(new PdfPCell {Border = Rectangle.BOTTOM_BORDER,BorderColorBottom = BaseColor.BLACK,BorderWidthBottom = 2 });
-                tableHeight = table.TotalHeight;
-            }
-
-            public float getTableHeight()
-            {
-                return tableHeight;
-            }
-
-            public override void OnEndPage(PdfWriter writer, Document document)
-            {
-                table.WriteSelectedRows(0, -1,
-                        document.Left,
-                        document.Top + ((document.TopMargin + tableHeight) / 2),
-                        writer.DirectContent);
-            }
         }
     }
 }
