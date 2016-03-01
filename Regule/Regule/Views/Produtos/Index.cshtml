@@ -29,10 +29,10 @@
                 @Html.DisplayFor(modelItem => item.Nome)
             </td>
             <td>
-                <span class="btn-group btn-group-sm">
-                    <a href="Produtos/Edit/@item.Id" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
-                    <a href="Produtos/Details/@item.Id" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></a>
-                    <a href="Produtos/Delete/@item.Id" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></a>
+                <span class="btn-group">
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-sm btn-default" })
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.Id }, new { @class = "btn btn-sm btn-default" })
+                    @Html.ActionLink("Deletar", "Delete", new { id = item.Id }, new { @class = "btn btn-sm btn-default" })
                 </span>
             </td>
         </tr>

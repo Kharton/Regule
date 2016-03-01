@@ -17,8 +17,10 @@ namespace Regule.Models
         public DateTime Fim { get; set; }
 
         public int Produto { get; set; }
-        
-        public int Pessoa { get; set; }
+
+        public int Cliente { get; set; }
+
+        public int Fornecedor{ get; set; }
     }
 
 }
