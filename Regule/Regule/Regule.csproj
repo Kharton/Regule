@@ -209,6 +209,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\carrinho.png" />
+    <Content Include="images\icone.png" />
+    <Content Include="images\pessoas.png" />
+    <Content Include="images\relatorio.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Models\Regule.dbml">
