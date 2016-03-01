@@ -207,7 +207,7 @@ namespace Regule.Controllers
                         }
 
                     }
-                }catch(Exception e)
+                }catch(Exception)
                 {
 
                 }
@@ -221,6 +221,7 @@ namespace Regule.Controllers
                 table.LockedWidth = true;
                 table.SetWidths(new float[] { 0.5f, 0.2f,0.3f});
 
+                phrase = new Phrase();
                 phrase.Add(new Chunk("Vlr Total: ", FontTextoN));
                 cell = PhraseCell(phrase, Element.ALIGN_RIGHT);
                 cell.Border = PdfPCell.NO_BORDER;
@@ -237,7 +238,7 @@ namespace Regule.Controllers
                 
                 table.AddCell(new PdfPCell() { Border = PdfPCell.NO_BORDER});
 
-                doc.Add(table);
+                table.WriteSelectedRows(0, -1, 40, 45, Pdf.DirectContent);
                 
                 #endregion
                 for (int i = 0; i <= ind / 22; i++)
@@ -288,11 +289,11 @@ public class ITextEvents : PdfPageEventHelper
             cb = writer.DirectContent;
             headerTemplate = cb.CreateTemplate(100, 100);
         }
-        catch (DocumentException de)
+        catch (DocumentException)
         {
             //handle exception here
         }
-        catch (System.IO.IOException ioe)
+        catch (System.IO.IOException)
         {
             //handle exception here
         }
