@@ -2,27 +2,72 @@
     ViewBag.Title = "Home";
 }
 
-<div class="jumbotron">
-    <h1>Regule</h1>
-    <p class="lead">Um aplicativo para controle de compras e vendas com gerador de relatórios para melhor análise das transações.</p>
+<div class="texto-grande">
+    <img src="~/images/icone.png" />
+    <p>Um aplicativo para controle <br />de <span class="verde-grande">compras e venda</span> e <br />fácil gerenciamento para sua <span class="verde-grande">loja.</span></p>
 </div>
-
-<div class="row">
-    <div class="col-md-4">
+<hr class="inicio-hr"/>
+<div class="row destaques">
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <div class="circulos">
+                <img src="~/images/pessoas.png" />
+            </div>
+            <div class="caption">
+                <h3>Gestão de pessoas</h3>
+                <p>O sistema suporta o cadastro de pessoas, tanto funcionários quanto os clientes.</p>
+                <p>@Html.ActionLink("Dar uma olhada", "Index", "Clientes", new { area = "" }, new { @class = "btn btn-primary" })</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <div class="circulos">
+                <img src="~/images/carrinho.png" />
+            </div>
+            <div class="caption">
+                <h3>Fluxo de produtos</h3>
+                <p>As vendas suportam uma infinidade de valores, você pode vender em kg, L, ou qualquer unidade.</p>
+                <p>@Html.ActionLink("Dar uma olhada", "Index", "Compras", new { area = "" }, new { @class = "btn btn-primary" })</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <div class="circulos">
+                <img src="~/images/relatorio.png" />
+            </div>
+            <div class="caption">
+                <h3>Relatórios</h3>
+                <p>Resumos e relatórios de vendas em algum período tambem estão presentes.</p>
+                <p>@Html.ActionLink("Dar uma olhada", "Index", "Relatorios", new { area = "" }, new { @class = "btn btn-primary" })</p>
+            </div>
+        </div>
+    </div>
+    <!--<div class="col-md-4">
+        <div class="circulos">
+            <img src="~/images/pessoas.png" />
+        </div>
         <h2>Gestão de pessoas </h2>
         <p>
-            O sistema suporta o cadastro de pessoas, tanto funcionários quanto os clientes, assim ele transforma toda a papelada em uma tela organizada e bonita onde é possivel encontrar os registros rapidamente.
+            O sistema suporta o cadastro de pessoas, tanto funcionários quanto os clientes.
         </p>
         <p>@Html.ActionLink("Visualizar →","Index","Clientes", new{area = ""}, new{@class="btn btn-primary"})</p>
     </div>
     <div class="col-md-4">
+        <div class="circulos">
+            <img src="~/images/carrinho.png" />
+        </div>
         <h2>Fluxo de produtos</h2>
-        <p>As vendas suportam uma infinidade de valores, você pode vender em kg, L, ou qualquer unidade para facilitar a visualização e tudo isso não irá lhe atrapalhar em seus serviços diários.</p>
+        <p>As vendas suportam uma infinidade de valores, você pode vender em kg, L, ou qualquer unidade.</p>
         <p>@Html.ActionLink("Visualizar →","Index","Compras", new{area = ""}, new{@class= "btn btn-primary" })</p>
     </div>
     <div class="col-md-4">
+        <div class="circulos">
+            <img src="~/images/relatorio.png" />
+        </div>
         <h2>Relatórios</h2>
-        <p>Resumos e relatórios de vendas em algum período tambem estão presentes, não precisa mais esperar para saber sobre seus relatórios, assim as medidas podem ser tomadas rapidamente.</p>
+        <p>Resumos e relatórios de vendas em algum período tambem estão presentes.</p>
         <p>@Html.ActionLink("Visualizar →", "Index", "Relatorios", new { area = "" }, new { @class = "btn btn-primary" })</p>
-    </div>
+    </div>-->
 </div>
