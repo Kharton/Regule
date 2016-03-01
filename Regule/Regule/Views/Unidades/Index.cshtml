@@ -35,10 +35,10 @@
                 @Html.DisplayFor(modelItem => item.Descricao)
             </td>
             <td>
-                <span class="btn-group">
-                    @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-sm btn-default" })
-                    @Html.ActionLink("Detalhes", "Details", new { id = item.Id }, new { @class = "btn btn-sm btn-default" })
-                    @Html.ActionLink("Deletar", "Delete", new { id = item.Id }, new { @class = "btn btn-sm btn-default" })
+                <span class="btn-group btn-group-sm">
+                    <a href="Unidades/Edit/@item.Id" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="Unidades/Details/@item.Id" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></a>
+                    <a href="Unidades/Delete/@item.Id" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></a>
                 </span>
             </td>
         </tr>
