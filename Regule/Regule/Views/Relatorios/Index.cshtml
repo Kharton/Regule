@@ -3,26 +3,41 @@
 @{
     ViewBag.Title = "Relatório";
 }
-
-<h2>Produtos</h2>
+<h2>Relatóros</h2>
 <div class="row">
     <div class="col-sm-6 col-md-offset-3">
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                Vendas
+                <div class="btn-group col-sm-12" data-toggle="buttons">
+                    <label class="btn btn-default active col-sm-6">
+                        <input type="radio" name="options" id="option1" autocomplete="off" checked> Relatório de Vendas
+                    </label>
+                    <label class="btn btn-default col-sm-6">
+                        <input type="radio" name="options" id="option2" autocomplete="off"> Relatório de Compras
+                    </label>
+                </div>
             </div>
             <div class="panel-body">
                 @using (Html.BeginForm())
                 {
                     @Html.AntiForgeryToken()
-                    @*<div class="form-group">
+                    <div class="form-group">
                         <label class="control-label col-md-2" for="Cliente">
                             Cliente
                         </label>
                         <div class="col-md-10">
-                            @Html.DropDownListFor(model => model.Pessoa, ViewBag.Pessoas as IEnumerable<SelectListItem>, "<<Todos>>", new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.Pessoa, "", new { @class = "text-danger" })
+                            @Html.DropDownListFor(model => model.Cliente, ViewBag.Clientes as IEnumerable<SelectListItem>, "<<Todos>>", new { @class = "form-control",@data_val="false" })
+                            @Html.ValidationMessageFor(model => model.Cliente, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group hidden">
+                        <label class="control-label col-md-3" for="Cliente">
+                            Fornecedores
+                        </label>
+                        <div class="col-md-9">
+                            @Html.DropDownListFor(model => model.Fornecedor, ViewBag.Fornecedores as IEnumerable<SelectListItem>, "<<Todos>>", new { @class = "form-control", @data_val = "false" })
+                            @Html.ValidationMessageFor(model => model.Fornecedor, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="form-group">
@@ -30,10 +45,10 @@
                             Produto
                         </label>
                         <div class="col-md-10">
-                            @Html.DropDownListFor(model => model.Produto, ViewBag.Produtos as IEnumerable<SelectListItem>, "<<Todos>>", new { @class = "form-control" })
+                            @Html.DropDownListFor(model => model.Produto, ViewBag.Produtos as IEnumerable<SelectListItem>, "<<Todos>>", new { @class = "form-control", @data_val = "false" })
                             @Html.ValidationMessageFor(model => model.Produto, "", new { @class = "text-danger" })
                         </div>
-                    </div>*@
+                    </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.Inicio, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -62,3 +77,40 @@
 
     </div>
 </div>
+@section scripts{
+    <script>
+        var x = document.querySelectorAll('select[name]:not([name="Produto"])');
+        for (i = 0; i < x.length; i++) {
+            x[i].firstChild.value = -1;
+            x[i].selectedIndex=0;
+        }
+        x = document.getElementById("option1").parentElement;
+            x.addEventListener("click", function () {
+                if (this.className.indexOf('active') < 0) {
+                    var objetu = document.querySelector('.hidden');
+                    var lista = document.querySelector('[name="Cliente"]');
+                    lista.selectedIndex = 0;
+                    lista.firstChild.value = 0;
+                    lista = document.querySelector('[name="Fornecedor"]');
+                    lista.selectedIndex = 0;
+                    lista.firstChild.value = -1;
+                    lista.parentElement.parentElement.classList.add('hidden');
+                    objetu.classList.remove('hidden');
+                }
+            })
+        var x = document.getElementById("option2").parentElement;
+            x.addEventListener("click", function () {
+                if (this.className.indexOf('active') < 0) {
+                    var objetu = document.querySelector('.hidden');
+                    var lista = document.querySelector('[name="Fornecedor"]');
+                    lista.selectedIndex = 0;
+                    lista.firstChild.value = 0;
+                    lista = document.querySelector('[name="Cliente"]');
+                    lista.selectedIndex = 0;
+                    lista.firstChild.value = -1;
+                    lista.parentElement.parentElement.classList.add('hidden');
+                    objetu.classList.remove('hidden');
+                }
+            })
+    </script>
+}
