@@ -71,7 +71,7 @@ namespace Regule.Controllers
 
             ITextEvents evento = new ITextEvents(phrase,rel);
 
-            byte[] b = Func.Fornecedor > 0 ? CreatePDF(evento,null, c) : CreatePDF(evento, v);
+            byte[] b = Func.Fornecedor >= 0 ? CreatePDF(evento,null, c) : CreatePDF(evento, v);
             
             return new FileStreamResult(new MemoryStream(b), "application/pdf");
         }
