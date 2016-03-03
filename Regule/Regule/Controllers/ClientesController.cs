@@ -160,7 +160,10 @@ namespace Regule.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Pessoa Fisi = db.Pessoas.FirstOrDefault(x => x.Id == id);
-            db.Pessoas.DeleteOnSubmit(Fisi);
+            if(Fisi.Fisica != null)
+                db.Fisicas.DeleteOnSubmit(Fisi.Fisica);
+            else
+                db.Juridicas.DeleteOnSubmit(Fisi.Juridica)
             db.SubmitChanges();
             return RedirectToAction("Index");
         }
