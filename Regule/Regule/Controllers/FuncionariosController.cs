@@ -139,6 +139,8 @@ namespace Regule.Controllers
         {
             Funcionario Func = db.Funcionarios.FirstOrDefault(x => x.Id == id);
             db.Funcionarios.DeleteOnSubmit(Func);
+            db.Fisicas.DeleteOnSubmit(Func.Fisica);
+            db.Pessoas.DeleteOnSubmit(Func.Fisica.Pessoa);
             db.SubmitChanges();
             return RedirectToAction("Index");
         }
