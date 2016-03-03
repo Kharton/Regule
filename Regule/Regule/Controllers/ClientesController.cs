@@ -163,7 +163,7 @@ namespace Regule.Controllers
             if(Fisi.Fisica != null)
                 db.Fisicas.DeleteOnSubmit(Fisi.Fisica);
             else
-                db.Juridicas.DeleteOnSubmit(Fisi.Juridica)
+                db.Juridicas.DeleteOnSubmit(Fisi.Juridica);
             db.SubmitChanges();
             return RedirectToAction("Index");
         }
