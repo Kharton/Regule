@@ -1,51 +1,28 @@
 ﻿@model Regule.Models.Pagamento
 
 @{
+    Layout = null;
     ViewBag.Title = "Pagamento";
 }
 
-<h2>Detalhes</h2>
-
-<div>
-    <h4>Pagamento</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Funcionario.Fisica.Pessoa.Nome)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Funcionario.Fisica.Pessoa.Nome)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Data)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Data)
-        </dd>
-
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Referencia)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Referencia)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Valor)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Valor)
-        </dd>
-    </dl>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title">Detalhes</h4>
+        </div>
+        <div class="modal-body">
+            <p>@Html.DisplayNameFor(model => model.Funcionario.Fisica.Pessoa.Nome) : @Html.DisplayFor(model => model.Funcionario.Fisica.Pessoa.Nome)</p>
+            <p>@Html.DisplayNameFor(model => model.Data) : @Html.DisplayFor(model => model.Data)</p>
+            <p>@Html.DisplayNameFor(model => model.Referencia) : @Html.DisplayFor(model => model.Referencia)</p>
+            <p>@Html.DisplayNameFor(model => model.Valor) : @Html.DisplayFor(model => model.Valor)</p>
+        </div>
+        <div class="modal-footer">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Deletar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Editar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Voltar</button>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Deletar", "Delete", new { id = Model.Id}) |
-    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Voltar a listagem", "Index")
-</p>
