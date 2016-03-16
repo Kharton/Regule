@@ -383,15 +383,11 @@ namespace Regule.Models
 
         private int _IdVend;
 
-        private int _IdUnidade;
-
         private System.Nullable<int> _Quantidade;
 
         private System.Nullable<decimal> _Preco;
 
         private EntityRef<Produto> _Produto;
-
-        private EntityRef<Unidade> _Unidade;
 
         private EntityRef<Venda> _Venda;
 
@@ -414,7 +410,6 @@ namespace Regule.Models
         public VendaProduto()
         {
             this._Produto = default(EntityRef<Produto>);
-            this._Unidade = default(EntityRef<Unidade>);
             this._Venda = default(EntityRef<Venda>);
             OnCreated();
         }
@@ -468,31 +463,7 @@ namespace Regule.Models
                 }
             }
         }
-
-        [Required(ErrorMessage = "Campo obrigatório")]
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_IdUnidade", DbType = "Int NOT NULL", IsPrimaryKey = true)]
-        public int IdUnidade
-        {
-            get
-            {
-                return this._IdUnidade;
-            }
-            set
-            {
-                if ((this._IdUnidade != value))
-                {
-                    if (this._Unidade.HasLoadedOrAssignedValue)
-                    {
-                        throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-                    }
-                    this.OnIdUnidadeChanging(value);
-                    this.SendPropertyChanging();
-                    this._IdUnidade = value;
-                    this.SendPropertyChanged("IdUnidade");
-                    this.OnIdUnidadeChanged();
-                }
-            }
-        }
+               
 
         [Required(ErrorMessage = "Campo obrigatório")]
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Quantidade", DbType = "Int", UpdateCheck = UpdateCheck.Never)]
@@ -568,41 +539,7 @@ namespace Regule.Models
                     this.SendPropertyChanged("Produto");
                 }
             }
-        }
-
-        [global::System.Data.Linq.Mapping.AssociationAttribute(Name = "Unidade_VendaProduto", Storage = "_Unidade", ThisKey = "IdUnidade", OtherKey = "Id", IsForeignKey = true)]
-        public Unidade Unidade
-        {
-            get
-            {
-                return this._Unidade.Entity;
-            }
-            set
-            {
-                Unidade previousValue = this._Unidade.Entity;
-                if (((previousValue != value)
-                            || (this._Unidade.HasLoadedOrAssignedValue == false)))
-                {
-                    this.SendPropertyChanging();
-                    if ((previousValue != null))
-                    {
-                        this._Unidade.Entity = null;
-                        previousValue.VendaProdutos.Remove(this);
-                    }
-                    this._Unidade.Entity = value;
-                    if ((value != null))
-                    {
-                        value.VendaProdutos.Add(this);
-                        this._IdUnidade = value.Id;
-                    }
-                    else
-                    {
-                        this._IdUnidade = default(int);
-                    }
-                    this.SendPropertyChanged("Unidade");
-                }
-            }
-        }
+        }        
 
         [global::System.Data.Linq.Mapping.AssociationAttribute(Name = "Venda_VendaProduto", Storage = "_Venda", ThisKey = "IdVend", OtherKey = "Id", IsForeignKey = true, DeleteOnNull = true, DeleteRule = "CASCADE")]
         public Venda Venda
@@ -2119,8 +2056,6 @@ namespace Regule.Models
 
         private string _Descricao;
 
-        private EntitySet<VendaProduto> _VendaProdutos;
-
         private EntitySet<CompraProduto> _CompraProdutos;
 
         #region Extensibility Method Definitions
@@ -2137,7 +2072,6 @@ namespace Regule.Models
 
         public Unidade()
         {
-            this._VendaProdutos = new EntitySet<VendaProduto>(new Action<VendaProduto>(this.attach_VendaProdutos), new Action<VendaProduto>(this.detach_VendaProdutos));
             this._CompraProdutos = new EntitySet<CompraProduto>(new Action<CompraProduto>(this.attach_CompraProdutos), new Action<CompraProduto>(this.detach_CompraProdutos));
             OnCreated();
         }
@@ -2204,19 +2138,6 @@ namespace Regule.Models
             }
         }
 
-        [global::System.Data.Linq.Mapping.AssociationAttribute(Name = "Unidade_VendaProduto", Storage = "_VendaProdutos", ThisKey = "Id", OtherKey = "IdUnidade")]
-        public EntitySet<VendaProduto> VendaProdutos
-        {
-            get
-            {
-                return this._VendaProdutos;
-            }
-            set
-            {
-                this._VendaProdutos.Assign(value);
-            }
-        }
-
         [global::System.Data.Linq.Mapping.AssociationAttribute(Name = "Unidade_CompraProduto", Storage = "_CompraProdutos", ThisKey = "Id", OtherKey = "IdUnidade")]
         public EntitySet<CompraProduto> CompraProdutos
         {
@@ -2253,13 +2174,11 @@ namespace Regule.Models
         private void attach_VendaProdutos(VendaProduto entity)
         {
             this.SendPropertyChanging();
-            entity.Unidade = this;
         }
 
         private void detach_VendaProdutos(VendaProduto entity)
         {
             this.SendPropertyChanging();
-            entity.Unidade = null;
         }
 
         private void attach_CompraProdutos(CompraProduto entity)

@@ -13,12 +13,6 @@
 
 
                     <td>
-                        @Html.DropDownListFor(m => Model.IdUnidade, ViewBag.Unidades as IEnumerable<SelectListItem>
-                            ,"Unidade",new { @class = "form-control" })
-                    </td>
-
-
-                    <td>
                         @Html.EditorFor(m => Model.Preco , new { @class = "form-control", @data_val_number="O campo deve ser um número" })
                         @Html.ValidationMessageFor(m => Model.Preco, "", new { @class = "text-danger" })
                     </td>

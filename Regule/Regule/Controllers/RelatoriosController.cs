@@ -128,7 +128,7 @@ namespace Regule.Controllers
             phrase.Add(new Chunk("Vlr. Total", FontTexto));
             cell = PhraseCell(phrase, PdfPCell.ALIGN_LEFT);
             table.AddCell(cell);
-            int ind = 0;
+            int ind = 0,peso=0;
                 try {
                     if (evento.header == "Vendas")
                     {
@@ -151,7 +151,7 @@ namespace Regule.Controllers
                             table.AddCell(cell);
                             //Quantidade
                             phrase = new Phrase();
-                            phrase.Add(new Chunk(item.Quantidade.ToString() + " - " + item.Unidade.Sigla, FontTexto));
+                            phrase.Add(new Chunk(item.Quantidade.ToString() + " - Kg", FontTexto));
                             cell = PhraseCell(phrase, PdfPCell.ALIGN_RIGHT);
                             table.AddCell(cell);
                             //Valor/Un
@@ -165,6 +165,7 @@ namespace Regule.Controllers
                             cell = PhraseCell(phrase, PdfPCell.ALIGN_RIGHT);
                             table.AddCell(cell);
                             total += item.Preco * item.Quantidade;
+                            peso += (int)item.Quantidade;
                             ind++;
                         }
                     }

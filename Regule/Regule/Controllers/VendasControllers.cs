@@ -64,8 +64,6 @@ namespace Regule.Controllers
                 Vend.VendaProdutos.Add(new VendaProduto());
             }
             ViewBag.Pessoas = pessoas.Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
-            IEnumerable<Unidade> unidades = db.Unidades.ToList();
-            ViewBag.Unidades = unidades.Select(h => new SelectListItem { Text = h.Sigla + " - " + h.Descricao, Value = h.Id.ToString() });
             IEnumerable<Produto> produtos = db.Produtos.ToList();
             ViewBag.Produtos = produtos.Select(h => new SelectListItem { Text = h.Nome, Value = h.Id.ToString() });
             return View();
